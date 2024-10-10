@@ -1,136 +1,74 @@
+import { Image, Text, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native';
+import MOON_ICON from '../assets/moon.png';
+import PHONE_ICON from '../assets/phone.png';
+import ARROW_LEFT_ICON from '../assets/arrow-left.png';
+import ARROW_RIGHT_ICON from '../assets/arrow-right.png';
+
 import {
-  StyleSheet,
-  Text,
-  TextStyle,
-  TouchableOpacity,
-  View,
-  ViewStyle,
-} from 'react-native';
+  NEUTRAL_GRAY_200,
+  NEUTRAL_WHITE_50,
+  PRIMARY_BLUE_900,
+  PRIMARY_NAVYBLUE_100,
+  PRIMARY_NAVYBLUE_900,
+  SECONDARY_GREEN_700,
+  SECONDARY_RED_700,
+  SECONDARY_YELLOW_700,
+} from '../colors';
 
-import { ReactComponent as Phone } from '../assets/phone.svg';
-import { ReactComponent as ArrowRight } from '../assets/arrow-right.svg';
-import { ReactComponent as ArrowLeft } from '../assets/arrow-left.svg';
-import { ReactComponent as MoonPlus } from '../assets/moon-plus.svg';
+import { ButtonProps } from '../types/button.type';
+import { styles } from '../styles/button.styles';
 
-const styles = StyleSheet.create({
-  button: {
-    flexDirection: 'row',
-    maxHeight: 47,
-    paddingHorizontal: 16,
-    paddingVertical: 11,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexShrink: 0,
-    borderRadius: 10,
-  },
-  gap: {
-    gap: 10,
-  },
-  active: {
-    paddingHorizontal: 25,
-    borderRadius: 90,
-  },
-  activeButtonText: {
-    fontWeight: 700,
-  },
-  activeIconOnly: {
-    borderRadius: 50,
-    paddingHorizontal: 11,
-    margin: 0,
-    gap: 0,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  buttonText: {
-    color: '#fff',
-    textAlign: 'center',
-    fontFamily: 'Manrope, sans-serif',
-    fontSize: 15,
-    fontStyle: 'normal',
-    fontWeight: 500,
-    lineHeight: 150,
-  },
-  buttonContainer: {
-    alignItems: 'flex-start',
-    flex: 1,
-    width: 'auto',
-    height: 'auto',
-  },
-});
-
-type ButtonProps = {
-  text: string;
-  textColor?: TextStyle;
-  handlePress?: () => void;
-  type:
-    | 'defaultSecondary'
-    | 'default'
-    | 'disabled'
-    | 'warning'
-    | 'danger'
-    | 'success'
-    | 'outline'
-    | 'active'
-    | 'activeOutline';
-  disabled?: boolean;
-  icon: boolean;
-  arrow: boolean;
-  moon: boolean;
-  iconPosition?: 'right' | 'left';
-  arrowPosition?: 'right' | 'left';
-  active?: boolean;
-  iconOnly?: boolean;
-};
-
+// COMPONENT
 export const Button = ({
-  text,
-  textColor,
+  // ! figure out the type and use
+  children = 'Hello Button',
+  // TODO: done
+  textColor = NEUTRAL_WHITE_50,
   handlePress,
   type = 'defaultSecondary',
   disabled,
   icon,
+  iconColor = NEUTRAL_WHITE_50,
   arrow,
   moon = false,
   iconPosition,
   arrowPosition,
-  active,
+  secondary,
   iconOnly,
 }: ButtonProps) => {
   const variantStyles: Record<ButtonProps['type'], ViewStyle | TextStyle> = {
     defaultSecondary: {
-      backgroundColor: '#C9D5FF',
+      backgroundColor: PRIMARY_NAVYBLUE_100,
     },
     default: {
-      backgroundColor: '#0023A0',
+      backgroundColor: PRIMARY_NAVYBLUE_900,
     },
     disabled: {
-      backgroundColor: '#9DA5B2',
+      backgroundColor: NEUTRAL_GRAY_200,
     },
     warning: {
-      backgroundColor: '#F0BB00',
+      backgroundColor: SECONDARY_YELLOW_700,
     },
     danger: {
-      backgroundColor: '#BB002D',
+      backgroundColor: SECONDARY_RED_700,
     },
     success: {
-      backgroundColor: '#127D00',
+      backgroundColor: SECONDARY_GREEN_700,
     },
     outline: {
       backgroundColor: 'transparent',
       borderStyle: 'solid',
       borderWidth: 1,
-      borderColor: '#9DA5B2',
+      borderColor: NEUTRAL_GRAY_200,
     },
     active: {
-      backgroundColor: '#275DF6',
+      backgroundColor: PRIMARY_BLUE_900,
       paddingHorizontal: 25,
     },
     activeOutline: {
       borderStyle: 'solid',
       borderWidth: 1,
-      borderColor: '#275DF6',
+      borderColor: PRIMARY_BLUE_900,
     },
   };
 
@@ -140,6 +78,9 @@ export const Button = ({
   //   lg: {},
   // };
 
+  // ? Conditional styles
+  const activeBtnStyles = secondary ? styles.activeButtonText : null;
+
   return (
     <View style={[styles.buttonContainer]}>
       <TouchableOpacity
@@ -147,20 +88,50 @@ export const Button = ({
         onPress={handlePress}
         style={[
           styles.button,
-          active ? styles.active : null,
+          secondary ? styles.secondary : null,
           icon || moon ? styles.gap : null,
           variantStyles[type],
           iconOnly ? styles.activeIconOnly : null,
         ]}
       >
-        {icon && iconPosition === 'left' ? <Phone /> : null}
-        {arrow && arrowPosition === 'left' ? <ArrowLeft /> : null}
-        {moon ? <MoonPlus /> : null}
-        <Text style={[styles.buttonText, active && styles.activeButtonText, textColor]}>
-          {iconOnly ? null : text}
+        {icon && iconPosition === 'left' ? (
+          <Image
+            source={{ uri: PHONE_ICON }}
+            resizeMode="contain"
+            tintColor={iconColor}
+          />
+        ) : null}
+        {arrow && arrowPosition === 'left' ? (
+          <Image
+            source={{ uri: ARROW_LEFT_ICON }}
+            resizeMode="contain"
+            tintColor={iconColor}
+            style={styles.icon}
+          />
+        ) : null}
+        {moon ? (
+          <Image source={{ uri: MOON_ICON }} resizeMode="contain" style={styles.icon} />
+        ) : null}
+        <Text style={{ ...styles.buttonText, ...activeBtnStyles, color: textColor }}>
+          {iconOnly ? null : children}
         </Text>
-        {icon && iconPosition === 'right' ? <Phone /> : null}
-        {arrow && arrowPosition === 'right' ? <ArrowRight /> : null}
+
+        {icon && iconPosition === 'right' ? (
+          <Image
+            source={{ uri: PHONE_ICON }}
+            resizeMode="contain"
+            tintColor={iconColor}
+            style={styles.icon}
+          />
+        ) : null}
+        {arrow && arrowPosition === 'right' ? (
+          <Image
+            source={{ uri: ARROW_RIGHT_ICON }}
+            resizeMode="contain"
+            tintColor={iconColor}
+            style={styles.icon}
+          />
+        ) : null}
       </TouchableOpacity>
     </View>
   );
