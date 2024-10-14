@@ -1,40 +1,36 @@
-import { Image, Text, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native';
-import MOON_ICON from '../assets/moon.png';
-import PHONE_ICON from '../assets/phone.png';
-import ARROW_LEFT_ICON from '../assets/arrow-left.png';
-import ARROW_RIGHT_ICON from '../assets/arrow-right.png';
+import { Text, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native';
 
 import {
   NEUTRAL_GRAY_200,
   NEUTRAL_WHITE_50,
+  NEUTRAL_WHITE_150,
   PRIMARY_BLUE_900,
   PRIMARY_NAVYBLUE_100,
   PRIMARY_NAVYBLUE_900,
   SECONDARY_GREEN_700,
   SECONDARY_RED_700,
   SECONDARY_YELLOW_700,
-} from '../colors';
+  NEUTRAL_BLACK_900,
+  PRIMARY_BLUE_50,
+} from '../utils/colors';
 
 import { ButtonProps } from '../types/button.type';
 import { styles } from '../styles/button.styles';
 
-// COMPONENT
 export const Button = ({
   // ! figure out the type and use
-  children = 'Hello Button',
+  children = 'Button Name',
   // TODO: done
   textColor = NEUTRAL_WHITE_50,
-  handlePress,
+  onPress,
   type = 'defaultSecondary',
-  disabled,
-  icon,
-  iconColor = NEUTRAL_WHITE_50,
-  arrow,
-  moon = false,
-  iconPosition,
-  arrowPosition,
-  secondary,
-  iconOnly,
+  isDisabled,
+  iconRight,
+  iconLeft,
+  isRounded,
+  isIconOnly,
+  isFullWidth,
+  ...props
 }: ButtonProps) => {
   const variantStyles: Record<ButtonProps['type'], ViewStyle | TextStyle> = {
     defaultSecondary: {
@@ -70,68 +66,106 @@ export const Button = ({
       borderWidth: 1,
       borderColor: PRIMARY_BLUE_900,
     },
+    card: {
+      borderStyle: 'solid',
+      borderWidth: 1,
+      borderColor: NEUTRAL_GRAY_200,
+
+      display: 'flex',
+      paddingHorizontal: 36.5,
+      paddingVertical: 22,
+      maxHeight: 99,
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      gap: 12,
+      flexShrink: 0,
+      borderRadius: 5,
+      flex: 1,
+    },
+    play: {
+      borderRadius: 50,
+      margin: 0,
+      width: 'auto',
+      height: 'auto',
+      gap: 0,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    boxed: {
+      borderRadius: 10,
+      borderWidth: 1,
+      borderColor: NEUTRAL_WHITE_150,
+      color: NEUTRAL_BLACK_900,
+      backgroundColor: NEUTRAL_WHITE_50,
+      minWidth: 322,
+    },
+    tertiary: {
+      backgroundColor: PRIMARY_BLUE_50,
+    },
   };
 
-  // const sizeStyles: Record<ButtonProps['size'], ViewStyle | TextStyle> = {
-  //   sm: {},
-  //   md: {},
-  //   lg: {},
-  // };
-
   // ? Conditional styles
-  const activeBtnStyles = secondary ? styles.activeButtonText : null;
+  const activeBtnStyles =
+    isRounded || type === 'card' || type === 'boxed' || type === 'tertiary'
+      ? styles.buttonTextBold
+      : null;
+  const outlineTextStyle = type === 'outline' ? styles.outlineText : null;
 
   return (
     <View style={[styles.buttonContainer]}>
       <TouchableOpacity
-        disabled={disabled}
-        onPress={handlePress}
+        disabled={isDisabled}
+        onPress={onPress}
         style={[
           styles.button,
-          secondary ? styles.secondary : null,
-          icon || moon ? styles.gap : null,
+          isRounded ? styles.rounded : null,
           variantStyles[type],
-          iconOnly ? styles.activeIconOnly : null,
+          iconLeft || iconRight ? styles.gap : null,
+          isIconOnly || type === 'play' ? styles.iconOnly : null,
+          isFullWidth ? styles.fullWidth : null,
+          isFullWidth && !iconLeft && !iconRight ? styles.contentCentered : null,
         ]}
+        {...props}
       >
-        {icon && iconPosition === 'left' ? (
-          <Image
-            source={{ uri: PHONE_ICON }}
-            resizeMode="contain"
-            tintColor={iconColor}
-          />
-        ) : null}
-        {arrow && arrowPosition === 'left' ? (
-          <Image
-            source={{ uri: ARROW_LEFT_ICON }}
-            resizeMode="contain"
-            tintColor={iconColor}
-            style={styles.icon}
-          />
-        ) : null}
-        {moon ? (
-          <Image source={{ uri: MOON_ICON }} resizeMode="contain" style={styles.icon} />
-        ) : null}
-        <Text style={{ ...styles.buttonText, ...activeBtnStyles, color: textColor }}>
-          {iconOnly ? null : children}
-        </Text>
+        {type === 'card' ? iconLeft : null}
+        <View
+          style={[
+            type !== 'card' ? styles.leftGroup : null,
+            iconLeft ? styles.gap : null,
+          ]}
+        >
+          {iconLeft && type !== 'card' ? iconLeft : null}
 
-        {icon && iconPosition === 'right' ? (
-          <Image
-            source={{ uri: PHONE_ICON }}
-            resizeMode="contain"
-            tintColor={iconColor}
-            style={styles.icon}
-          />
+          {isFullWidth && !iconLeft && !iconRight ? null : (
+            <Text
+              style={{
+                ...styles.buttonText,
+                color: textColor,
+                ...outlineTextStyle,
+                ...activeBtnStyles,
+              }}
+            >
+              {isIconOnly || type === 'play' ? null : children}
+            </Text>
+          )}
+        </View>
+
+        {isFullWidth && !iconLeft && !iconRight ? (
+          <Text
+            style={{
+              ...styles.buttonText,
+              color: textColor,
+              ...outlineTextStyle,
+              ...activeBtnStyles,
+            }}
+          >
+            {isIconOnly || type === 'play' ? null : children}
+          </Text>
         ) : null}
-        {arrow && arrowPosition === 'right' ? (
-          <Image
-            source={{ uri: ARROW_RIGHT_ICON }}
-            resizeMode="contain"
-            tintColor={iconColor}
-            style={styles.icon}
-          />
-        ) : null}
+
+        {iconRight ? iconRight : null}
       </TouchableOpacity>
     </View>
   );

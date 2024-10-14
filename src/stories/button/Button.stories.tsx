@@ -1,11 +1,19 @@
+import { Meta, StoryObj } from '@storybook/react';
+import { Image } from 'react-native';
 import {
   NEUTRAL_GRAY_200,
   PRIMARY_BLUE_900,
   NEUTRAL_WHITE_150,
   NEUTRAL_BLACK_900,
-} from '../../colors';
+  NEUTRAL_WHITE_50,
+} from '../../utils/colors';
 import { Button } from '../../components/Button';
-import { Meta, StoryObj } from '@storybook/react';
+import { styles } from '../../styles/button.styles';
+
+import PHARMACY_ICON from '../../assets/pharmacy.png';
+import PHONE_ICON from '../../assets/phone.png';
+import ARROW_RIGHT_ICON from '../../assets/arrow-right.png';
+import PLAY_ICON from '../../assets/play.png';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
@@ -27,7 +35,21 @@ const meta: Meta<typeof Button> = {
     // ! Add types and check how they work together
     type: {
       description: 'Choose a type of a button to see different styling',
-      options: ['defaultSecondary', 'default', 'success', 'warning', 'danger'],
+      options: [
+        'defaultSecondary',
+        'default',
+        'disabled',
+        'warning',
+        'danger',
+        'success',
+        'outline',
+        'active',
+        'activeOutline',
+        'card',
+        'boxed',
+        'tertiary',
+        'play',
+      ],
       control: {
         type: 'select',
       },
@@ -35,297 +57,197 @@ const meta: Meta<typeof Button> = {
     textColor: {
       description: 'The text color you want to display inside the button.',
     },
-    disabled: {
+    isDisabled: {
       description: 'Boolean property to set disabled property on a button',
       type: 'boolean',
     },
-    handlePress: {
+    isFullWidth: {
+      description: 'Boolean property to set the full width of the button',
+      type: 'boolean',
+    },
+    onPress: {
       description: 'Function to call when the button is pressed.',
       action: 'clicked',
-    },
-    icon: {
-      description:
-        'Set this parameter to true if you want to see an icon as well as icon position, or false if you want to remove it.',
-      control: { type: 'boolean' },
-    },
-    iconPosition: {
-      description:
-        'Set this parameter to right if you want to position your icon on right, and left if you want to be it on left.',
-      control: { type: 'radio' },
-      options: ['right', 'left'],
-    },
-    arrow: {
-      description:
-        'Set this parameter to true if you want to see an arrow as well as arrow position, or false if you want to remove it.',
-      control: { type: 'boolean' },
-    },
-    arrowPosition: {
-      description:
-        'Set this parameter to right if you want to position your arrow on right, and left if you want to be it on left.',
-      control: { type: 'radio' },
-      options: ['right', 'left'],
     },
   },
 };
 
 export default meta;
 
-// ! ---- Capsule style buttons ----
-
-export const Active: StoryObj<typeof Button> = {
-  args: {
-    type: 'active',
-    secondary: true,
-  },
-  render: (args) => <Button {...args}>{args.children}</Button>,
-};
-
-export const ActiveOutline: StoryObj<typeof Button> = {
-  args: {
-    type: 'activeOutline',
-    secondary: true,
-    textColor: PRIMARY_BLUE_900,
-  },
-  render: (args) => <Button {...args}>{args.children}</Button>,
-};
-
-export const DisabledOutline: StoryObj<typeof Button> = {
+export const Outline: StoryObj<typeof Button> = {
   args: {
     type: 'outline',
-    secondary: true,
+    children: 'Active Button',
+  },
+  render: (args) => <Button {...args}>{args.children}</Button>,
+};
+
+export const activeOutline: StoryObj<typeof Button> = {
+  args: {
+    type: 'activeOutline',
+    isRounded: true,
+    textColor: PRIMARY_BLUE_900,
+    iconLeft: (
+      <Image
+        source={{ uri: PHONE_ICON }}
+        resizeMode="contain"
+        tintColor={PRIMARY_BLUE_900}
+        style={styles.icon}
+      />
+    ),
+    iconRight: (
+      <Image
+        source={{ uri: ARROW_RIGHT_ICON }}
+        resizeMode="contain"
+        tintColor={PRIMARY_BLUE_900}
+        style={styles.icon}
+      />
+    ),
+  },
+  render: (args) => <Button {...args}>{args.children}</Button>,
+};
+
+export const MainWarning: StoryObj<typeof Button> = {
+  args: {
+    type: 'danger',
+    isRounded: true,
+    textColor: NEUTRAL_WHITE_150,
+    iconRight: (
+      <Image
+        source={{ uri: ARROW_RIGHT_ICON }}
+        resizeMode="contain"
+        tintColor={NEUTRAL_WHITE_150}
+        style={styles.icon}
+      />
+    ),
+  },
+  render: (args) => <Button {...args}>{args.children}</Button>,
+};
+
+export const Tertiary: StoryObj<typeof Button> = {
+  args: {
+    type: 'tertiary',
+    textColor: PRIMARY_BLUE_900,
+    iconRight: (
+      <Image
+        source={{ uri: ARROW_RIGHT_ICON }}
+        resizeMode="contain"
+        tintColor={PRIMARY_BLUE_900}
+        style={styles.icon}
+      />
+    ),
+    iconLeft: (
+      <Image
+        source={{ uri: PHONE_ICON }}
+        resizeMode="contain"
+        tintColor={PRIMARY_BLUE_900}
+        style={styles.icon}
+      />
+    ),
+  },
+  render: (args) => <Button {...args}>{args.children}</Button>,
+};
+
+export const Card: StoryObj<typeof Button> = {
+  args: {
+    type: 'card',
+    textColor: NEUTRAL_BLACK_900,
+    iconLeft: (
+      <Image source={{ uri: PHARMACY_ICON }} resizeMode="contain" style={styles.icon} />
+    ),
+  },
+  render: (args) => <Button {...args}>{args.children}</Button>,
+};
+
+export const CardDisabled: StoryObj<typeof Button> = {
+  args: {
+    isDisabled: true,
+    type: 'card',
     textColor: NEUTRAL_GRAY_200,
-    disabled: true,
+    iconLeft: (
+      <Image
+        source={{ uri: PHARMACY_ICON }}
+        tintColor={NEUTRAL_GRAY_200}
+        resizeMode="contain"
+        style={styles.icon}
+      />
+    ),
   },
   render: (args) => <Button {...args}>{args.children}</Button>,
 };
 
-export const DisabledActive: StoryObj<typeof Button> = {
+export const SecondaryDisabledIconOnly: StoryObj<typeof Button> = {
   args: {
     type: 'disabled',
-    secondary: true,
-    disabled: true,
+    isRounded: true,
+    isDisabled: true,
+    isIconOnly: true,
+    iconRight: (
+      <Image
+        source={{ uri: PHONE_ICON }}
+        resizeMode="contain"
+        tintColor={NEUTRAL_WHITE_50}
+        style={styles.icon}
+      />
+    ),
   },
   render: (args) => <Button {...args}>{args.children}</Button>,
 };
 
-export const ActiveIcon: StoryObj<typeof Button> = {
-  args: {
-    type: 'active',
-    secondary: true,
-    icon: true,
-    iconPosition: 'right',
-  },
-  render: (args) => <Button {...args}>{args.children}</Button>,
-};
-
-export const ActiveOutlineIcon: StoryObj<typeof Button> = {
-  args: {
-    type: 'activeOutline',
-    secondary: true,
-    textColor: PRIMARY_BLUE_900,
-    icon: true,
-    iconColor: PRIMARY_BLUE_900,
-    iconPosition: 'right',
-  },
-  render: (args) => <Button {...args}>{args.children}</Button>,
-};
-
-export const DisabledActiveIcon: StoryObj<typeof Button> = {
-  args: {
-    type: 'disabled',
-    secondary: true,
-    disabled: true,
-    icon: true,
-    iconPosition: 'right',
-  },
-  render: (args) => <Button {...args}>{args.children}</Button>,
-};
-
-export const ActiveOutlineIconOnly: StoryObj<typeof Button> = {
-  args: {
-    type: 'activeOutline',
-    secondary: true,
-    icon: true,
-    iconColor: PRIMARY_BLUE_900,
-    iconPosition: 'right',
-    iconOnly: true,
-  },
-  render: (args) => <Button {...args}>{args.children}</Button>,
-};
-
-export const DisabledActiveIconOnly: StoryObj<typeof Button> = {
-  args: {
-    type: 'disabled',
-    secondary: true,
-    disabled: true,
-    icon: true,
-    iconPosition: 'right',
-    iconOnly: true,
-  },
-  render: (args) => <Button {...args}>{args.children}</Button>,
-};
-
-// ! ---- Brick style buttons ----
-
-export const DefaultSecondary: StoryObj<typeof Button> = {
-  args: {
-    type: 'defaultSecondary',
-    textColor: NEUTRAL_BLACK_900,
-  },
-  render: (args) => <Button {...args}>{args.children}</Button>,
-};
-
-export const Default: StoryObj<typeof Button> = {
-  args: {
-    type: 'default',
-  },
-  render: (args) => <Button {...args}>{args.children}</Button>,
-};
-
-export const Disabled: StoryObj<typeof Button> = {
+export const MainDisabled: StoryObj<typeof Button> = {
   args: {
     textColor: NEUTRAL_WHITE_150,
     type: 'disabled',
-    disabled: true,
+    isDisabled: true,
   },
   render: (args) => <Button {...args}>{args.children}</Button>,
 };
 
-export const Warning: StoryObj<typeof Button> = {
+export const Boxed: StoryObj<typeof Button> = {
   args: {
-    type: 'warning',
-  },
-  render: (args) => <Button {...args}>{args.children}</Button>,
-};
-export const Danger: StoryObj<typeof Button> = {
-  args: {
-    type: 'danger',
-  },
-  render: (args) => <Button {...args}>{args.children}</Button>,
-};
-
-export const Success: StoryObj<typeof Button> = {
-  args: {
-    type: 'success',
-  },
-  render: (args) => <Button {...args}>{args.children}</Button>,
-};
-
-export const DefaultSecondaryIcon: StoryObj<typeof Button> = {
-  args: {
-    type: 'defaultSecondary',
+    type: 'boxed',
     textColor: NEUTRAL_BLACK_900,
-    icon: true,
-    iconPosition: 'right',
-    iconColor: NEUTRAL_BLACK_900,
+    iconLeft: (
+      <Image
+        source={{ uri: PHONE_ICON }}
+        resizeMode="contain"
+        tintColor={PRIMARY_BLUE_900}
+        style={styles.icon}
+      />
+    ),
+    iconRight: (
+      <Image
+        source={{ uri: ARROW_RIGHT_ICON }}
+        resizeMode="contain"
+        tintColor={PRIMARY_BLUE_900}
+        style={styles.icon}
+      />
+    ),
   },
   render: (args) => <Button {...args}>{args.children}</Button>,
 };
 
-export const DisabledIcon: StoryObj<typeof Button> = {
+export const Play: StoryObj<typeof Button> = {
   args: {
-    type: 'disabled',
-    disabled: true,
-    icon: true,
-    iconPosition: 'right',
+    type: 'play',
+    iconRight: (
+      <Image source={{ uri: PLAY_ICON }} resizeMode="contain" style={styles.playIcon} />
+    ),
   },
   render: (args) => <Button {...args}>{args.children}</Button>,
 };
 
-export const WarningIcon: StoryObj<typeof Button> = {
+export const PlayBlack: StoryObj<typeof Button> = {
   args: {
-    type: 'warning',
-    icon: true,
-    iconPosition: 'right',
-  },
-  render: (args) => <Button {...args}>{args.children}</Button>,
-};
-
-export const SuccessIcon: StoryObj<typeof Button> = {
-  args: {
-    type: 'success',
-    icon: true,
-    iconPosition: 'right',
-  },
-  render: (args) => <Button {...args}>{args.children}</Button>,
-};
-
-export const DangerIcon: StoryObj<typeof Button> = {
-  args: {
-    type: 'danger',
-    icon: true,
-    iconPosition: 'right',
-  },
-  render: (args) => <Button {...args}>{args.children}</Button>,
-};
-
-export const DefaultSecondaryIconArrow: StoryObj<typeof Button> = {
-  args: {
-    type: 'defaultSecondary',
-    textColor: NEUTRAL_BLACK_900,
-    icon: true,
-    iconPosition: 'right',
-    iconColor: NEUTRAL_BLACK_900,
-    arrow: true,
-    arrowPosition: 'left',
-  },
-  render: (args) => <Button {...args}>{args.children}</Button>,
-};
-
-export const DisabledIconArrow: StoryObj<typeof Button> = {
-  args: {
-    type: 'disabled',
-    textColor: NEUTRAL_WHITE_150,
-    icon: true,
-    disabled: true,
-    iconPosition: 'right',
-    arrow: true,
-    arrowPosition: 'left',
-  },
-  render: (args) => <Button {...args}>{args.children}</Button>,
-};
-
-export const WarningIconArrow: StoryObj<typeof Button> = {
-  args: {
-    type: 'warning',
-    icon: true,
-    iconPosition: 'right',
-    arrow: true,
-    arrowPosition: 'left',
-  },
-  render: (args) => <Button {...args}>{args.children}</Button>,
-};
-
-export const SuccessIconArrow: StoryObj<typeof Button> = {
-  args: {
-    type: 'success',
-    icon: true,
-    iconPosition: 'right',
-    arrow: true,
-    arrowPosition: 'left',
-  },
-  render: (args) => <Button {...args}>{args.children}</Button>,
-};
-
-export const DangerIconArrow: StoryObj<typeof Button> = {
-  args: {
-    type: 'danger',
-    icon: true,
-    iconPosition: 'right',
-    arrow: true,
-    arrowPosition: 'left',
-  },
-  render: (args) => <Button {...args}>{args.children}</Button>,
-};
-
-export const OutlineMoonIcon: StoryObj<typeof Button> = {
-  args: {
-    type: 'outline',
-    textColor: NEUTRAL_BLACK_900,
-    moon: true,
-    arrowPosition: 'right',
-    arrow: true,
-    iconColor: PRIMARY_BLUE_900,
+    type: 'play',
+    iconRight: (
+      <Image
+        source={{ uri: PLAY_ICON }}
+        resizeMode="contain"
+        style={styles.playIcon}
+        tintColor={NEUTRAL_BLACK_900}
+      />
+    ),
   },
   render: (args) => <Button {...args}>{args.children}</Button>,
 };

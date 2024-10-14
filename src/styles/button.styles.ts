@@ -1,28 +1,52 @@
 import { StyleSheet } from 'react-native';
+import { NEUTRAL_BLACK_900 } from '../utils/colors';
 
 export const styles = StyleSheet.create({
   button: {
+    display: 'flex',
     flexDirection: 'row',
-    maxHeight: 47,
+    minHeight: 47,
+    width: 'auto',
     paddingHorizontal: 16,
     paddingVertical: 11,
-    display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
     flexShrink: 0,
     borderRadius: 10,
   },
+  outlineText: {
+    color: NEUTRAL_BLACK_900,
+  },
   gap: {
     gap: 10,
   },
-  secondary: {
+  leftGroup: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  rounded: {
     paddingHorizontal: 25,
     borderRadius: 90,
   },
-  activeButtonText: {
+  card: {
+    display: 'flex',
+    paddingHorizontal: 36.5,
+    paddingVertical: 22,
+    maxHeight: 99,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 12,
+    // flexShrink: 0,
+    borderRadius: 5,
+    flex: 1,
+  },
+  buttonTextBold: {
     fontWeight: 700,
   },
-  activeIconOnly: {
+  iconOnly: {
     borderRadius: 50,
     paddingHorizontal: 11,
     margin: 0,
@@ -37,7 +61,7 @@ export const styles = StyleSheet.create({
     fontSize: 15,
     fontStyle: 'normal',
     fontWeight: 500,
-    lineHeight: 150,
+    // lineHeight: 150,
   },
   buttonContainer: {
     alignItems: 'flex-start',
@@ -48,5 +72,16 @@ export const styles = StyleSheet.create({
   icon: {
     width: 25,
     height: 25,
+  },
+  playIcon: {
+    width: 115,
+    height: 115,
+  },
+  fullWidth: {
+    width: '100%',
+    textAlign: 'center',
+  },
+  contentCentered: {
+    justifyContent: 'center',
   },
 });

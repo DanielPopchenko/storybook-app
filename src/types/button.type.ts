@@ -1,8 +1,10 @@
+import React from 'react';
+
 export type ButtonProps = {
   // ! make text a children prop
   children: string;
   textColor?: string;
-  handlePress?: () => void;
+  onPress?: () => void;
   type:
     | 'defaultSecondary'
     | 'default'
@@ -12,14 +14,24 @@ export type ButtonProps = {
     | 'success'
     | 'outline'
     | 'active'
-    | 'activeOutline';
-  disabled?: boolean;
-  icon: boolean;
-  iconColor: string;
-  arrow: boolean;
-  moon: boolean;
-  iconPosition?: 'right' | 'left';
-  arrowPosition?: 'right' | 'left';
-  secondary?: boolean;
-  iconOnly?: boolean;
+    | 'activeOutline'
+    | 'card'
+    | 'boxed'
+    | 'tertiary'
+    | 'play';
+  isDisabled?: boolean;
+  iconRight?: React.ReactNode;
+  iconLeft?: React.ReactNode;
+  isRounded?: boolean;
+  isIconOnly?: boolean;
+  isFullWidth?: boolean;
 };
+
+// secondIconSource: string;
+// isPhoneIcon: boolean;
+// isArrowIcon: boolean;
+// isMoonIcon: boolean;
+// isIconRight?: boolean;
+// isIconLeft?: boolean;
+// iconPosition?: 'right' | 'left';
+// arrowPosition?: 'right' | 'left';
