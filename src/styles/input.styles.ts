@@ -13,6 +13,7 @@ export const styles = StyleSheet.create({
     height: 'auto',
   },
   inputWrapper: {
+    flex: 1,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
@@ -57,9 +58,9 @@ export const styles = StyleSheet.create({
     width: 18,
   },
 
-  defaultLabelContainer: {
-    maxWidth: 252,
+  labelContainer: {
     display: 'flex',
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -98,4 +99,5 @@ export const styles = StyleSheet.create({
   smallText: {
     fontSize: 11.25,
   },
+  fullWidth: { maxWidth: '100%', width: '100%' },
 });

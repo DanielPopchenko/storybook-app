@@ -14,7 +14,7 @@ export const Input = ({
   iconLeft,
   iconRight,
   helpIcon,
-  type,
+  type = 'default',
   value,
   onChangeText,
   onKeyPress,
@@ -35,9 +35,8 @@ export const Input = ({
   ...props
 }: InputProps) => {
   const variantStyles: Record<InputProps['type'], ViewStyle | TextStyle> = {
-    default: { width: 252 },
-    small: { minWidth: 131, maxWidth: 205, minHeight: 42 },
-    large: { minWidth: 175, maxWidth: 250, minHeight: 56 },
+    default: { height: 42 },
+    large: { minHeight: 56 },
   };
 
   return (
@@ -45,40 +44,18 @@ export const Input = ({
       {label ? (
         // * Dynamic styles for label container, because it stretches to full with
         <View
-          style={
-            type === 'default'
-              ? [
-                  styles.defaultLabelContainer,
-                  variantStyles['default'],
-                  { minHeight: 1 },
-                  isFullWidth ? { maxWidth: '100%', width: '100%' } : null,
-                ]
-              : type === 'large'
-              ? [
-                  styles.defaultLabelContainer,
-                  variantStyles['large'],
-                  { minHeight: 1 },
-                  isFullWidth ? { maxWidth: '100%', width: '100%' } : null,
-                ]
-              : type === 'small'
-              ? [
-                  styles.defaultLabelContainer,
-                  variantStyles['small'],
-                  { minHeight: 1 },
-                  isFullWidth ? { maxWidth: '100%', width: '100%' } : null,
-                ]
-              : null
-          }
+          // style={
+          //   type === 'default'
+          //     ? [styles.defaultLabelContainer, variantStyles['default']]
+          //     : type === 'large'
+          //     ? [styles.defaultLabelContainer, variantStyles['large']]
+          //     : type === 'small'
+          //     ? [styles.defaultLabelContainer, variantStyles['small']]
+          //     : null
+          // }
+          style={styles.labelContainer}
         >
-          <Text
-            style={[
-              styles.labelText,
-              type === 'large' ? styles.largeText : null,
-              type === 'small' ? styles.smallText : null,
-            ]}
-          >
-            {label}
-          </Text>
+          <Text style={[styles.labelText]}>{label}</Text>
 
           {showHelp ? (
             <TouchableOpacity onPress={handleHelp} style={styles.helpIconContainer}>
@@ -92,14 +69,14 @@ export const Input = ({
         style={[
           styles.inputWrapper,
           variantStyles[type],
-          isFocused ? styles.active : styles.inactive,
-          isValid === false || isEmptyOnSubmit ? styles.error : null,
-          iconLeft || iconRight
-            ? styles.defaultGap
-            : type === 'small'
-            ? styles.smallGap
-            : null,
-          isFullWidth ? { width: '100%', maxWidth: '100%' } : null,
+          isValid === false || isEmptyOnSubmit
+            ? styles.error
+            : isFocused
+            ? styles.active
+            : styles.inactive,
+
+          iconLeft || iconRight ? styles.defaultGap : null,
+          // isFullWidth ? { width: '100%', maxWidth: '100%' } : null,
         ]}
       >
         {iconLeft ? iconLeft : null}
@@ -109,7 +86,6 @@ export const Input = ({
             styles.textInput,
             styles.text,
             type === 'large' ? styles.largeText : null,
-            type === 'small' ? styles.smallText : null,
           ]}
           placeholder={placeholder ? placeholder : ''}
           placeholderTextColor={NEUTRAL_GRAY_200}
@@ -128,7 +104,7 @@ export const Input = ({
         {iconRight ? iconRight : null}
       </View>
 
-      {warningText?.length ? <Text style={styles.warningText}>{warningText}</Text> : null}
+      {warningText ? <Text style={styles.warningText}>{warningText}</Text> : null}
     </View>
   );
 };

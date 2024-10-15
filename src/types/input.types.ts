@@ -1,7 +1,8 @@
+import React from 'react';
 import { NativeSyntheticEvent, TextInputFocusEventData } from 'react-native';
 
 export type InputProps = {
-  type: 'default' | 'large' | 'small';
+  type: 'default' | 'large';
   value: string;
   placeholder: string;
   onChangeText: any;
