@@ -175,3 +175,13 @@ export const Small: StoryObj<typeof Input> = {
 
   render: (args) => <Input {...args} />,
 };
+
+export const SmallError: StoryObj<typeof Input> = {
+  args: {
+    type: 'small',
+    placeholder: 'Default placeholder',
+    isValid: false,
+  },
+
+  render: (args) => <Input {...args} />,
+};

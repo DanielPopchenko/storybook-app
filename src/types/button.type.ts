@@ -26,12 +26,3 @@ export type ButtonProps = {
   isIconOnly?: boolean;
   isFullWidth?: boolean;
 };
-
-// secondIconSource: string;
-// isPhoneIcon: boolean;
-// isArrowIcon: boolean;
-// isMoonIcon: boolean;
-// isIconRight?: boolean;
-// isIconLeft?: boolean;
-// iconPosition?: 'right' | 'left';
-// arrowPosition?: 'right' | 'left';

@@ -1,95 +1,10 @@
-// export const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     width: 'auto',
-//     display: 'flex',
-//     flexDirection: 'row',
-//   },
-//   md: { maxWidth: 252, maxHeight: 42 },
-//   inputContainer: {
-//     flex: 1,
-//     display: 'flex',
-//     gap: 6,
-//     flexDirection: 'row',
-//     alignItems: 'center',
-//     justifyContent: 'space-between',
-// borderRadius: 7.5,
-// borderColor: NEUTRAL_WHITE_150,
-// borderWidth: 1,
-// borderStyle: 'solid',
-//   },
-//   // outlined: {}
-//   gap: {
-//     gap: 6,
-//   },
-
-//   // ! FIGURE OUT THE STYLES FOR ICONS AND INPUT !!!!
-//   input: {
-//     flex: 1,
-//     width: 'auto',
-//     height: '100%',
-//     padding: 12,
-//     backgroundColor: NEUTRAL_WHITE_50,
-//   },
-//   text: {
-//     color: NEUTRAL_BLACK_900,
-//     fontFamily: 'Manrope',
-//     fontSize: 11.25,
-//     fontStyle: 'normal',
-//     fontWeight: 500,
-//   },
-//   // !
-//   focused: {
-//     borderColor: SECONDARY_GREEN_900,
-//   },
-// });
-
-// export const styles = StyleSheet.create({
-//   container: {
-//     width: '100%',
-//     marginBottom: 8,
-//   },
-//   // container: {
-//   //   display: 'flex',
-//   //   flex: 2,
-//   //   flexDirection: 'row',
-//   //   alignItems: 'center',
-//   //   backgroundColor: NEUTRAL_WHITE_50,
-//   //   borderRadius: 7.5,
-//   //   borderColor: NEUTRAL_WHITE_150,
-//   //   borderWidth: 1,
-//   //   borderStyle: 'solid',
-//   //   maxWidth: 253,
-//   //   maxHeight: 42,
-//   // },
-//   inputContainer: {
-//     display: 'flex',
-//     flexDirection: 'row',
-//     justifyContent: 'space-between',
-//     alignItems: 'center',
-//     width: '100%',
-//     paddingHorizontal: 16,
-//     backgroundColor: NEUTRAL_WHITE_50,
-//     borderRadius: 7.5,
-//     borderColor: NEUTRAL_WHITE_150,
-//     borderWidth: 1,
-//     borderStyle: 'solid',
-//     maxWidth: 253,
-//     maxHeight: 42,
-//   },
-//   input: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     height: '80%',
-//   },
-// });
-
 import { StyleSheet } from 'react-native';
 import {
   NEUTRAL_BLACK_900,
   NEUTRAL_WHITE_150,
   NEUTRAL_WHITE_50,
   PRIMARY_BLUE_900,
+  SECONDARY_RED_700,
 } from '../utils/colors';
 export const styles = StyleSheet.create({
   container: {
@@ -130,6 +45,12 @@ export const styles = StyleSheet.create({
     fontWeight: 500,
   },
 
+  warningText: {
+    color: 'red',
+    fontSize: 12,
+    marginTop: 5,
+  },
+
   icon: {
     resizeMode: 'contain',
     height: 18,
@@ -165,7 +86,7 @@ export const styles = StyleSheet.create({
     borderColor: PRIMARY_BLUE_900,
   },
   error: {
-    borderColor: 'red',
+    borderColor: SECONDARY_RED_700,
   },
   inactive: {
     borderColor: NEUTRAL_WHITE_150,

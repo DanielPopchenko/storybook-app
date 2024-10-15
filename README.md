@@ -1,9 +1,6 @@
 \*\*\* - TODO -
 
-- TODO: // ! FIGURE OUT THE STYLES FOR ICONS AND INPUT
 - TODO: How can I check if the styles apply when input is focused
-- TODO: Input width behaves strangely
-- TODO: Dynamic styles for label container, because it stretches to full with
 
 \*\*\* --- DONE ---
 
@@ -18,6 +15,11 @@
 - Dinamically insert the icon
 - Think of additional styles prop
 - can you apply additional styles to the button -> yes, you can
+- ! FIGURE OUT THE STYLES FOR ICONS AND INPUT -> DONE
+- Input width behaves strangely -> Fixed
+- Dynamic styles for label container, because it stretches to full width -> DONE
+
+---
 
 <!-- ! Thoughts -->
 

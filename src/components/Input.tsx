@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import {
   Text,
   TextInput,
@@ -9,45 +8,7 @@ import {
 } from 'react-native';
 import { NEUTRAL_GRAY_200 } from '../utils/colors';
 import { styles } from '../styles/input.styles';
-
-type InputProps = {
-  type: 'default' | 'large' | 'small';
-  value: string;
-  onChangeText: any;
-  onKeyPress?: () => void;
-  iconLeft?: React.ReactNode;
-  iconRight?: React.ReactNode;
-  helpIcon?: React.ReactNode;
-  placeholder: string;
-  label?: string;
-  isSecureTextEntry?: boolean;
-  autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters' | undefined;
-  keyboardType?: 'default' | 'email-address' | 'numeric' | 'phone-pad';
-  isOnFocus?: boolean;
-  isOnBlur?: boolean;
-  showHelp?: boolean;
-  handleHelp?: () => void;
-  isValid?: boolean;
-  isEmptyOnSubmit?: boolean;
-  isFullWidth?: boolean;
-};
-
-// label?: string;
-// placeholder: string;
-// value: string;
-// onChangeText: any;
-// secureTextEntry: boolean;
-// autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters' | undefined;
-// showHelp: boolean;
-// warningText?: string;
-// handleHelp?: () => void;
-// onFocus?: boolean;
-// onKeyPress?: () => void;
-// scrollToPosition?: (position: number) => void;
-// onBlur?: boolean;
-// keyboardType?: 'default' | 'email-address' | 'numeric' | 'phone-pad';
-// isValid?: boolean;
-// isEmptyOnSubmit?: boolean;
+import { InputProps } from '../types/input.types';
 
 export const Input = ({
   iconLeft,
@@ -60,10 +21,12 @@ export const Input = ({
   placeholder,
   label,
   isSecureTextEntry,
+  warningText,
   autoCapitalize,
   keyboardType,
-  isOnFocus,
-  isOnBlur,
+  onFocus,
+  onBlur,
+  isFocused,
   showHelp,
   handleHelp,
   isValid,
@@ -76,8 +39,6 @@ export const Input = ({
     small: { minWidth: 131, maxWidth: 205, minHeight: 42 },
     large: { minWidth: 175, maxWidth: 250, minHeight: 56 },
   };
-
-  const [isFocused, setIsFocused] = useState<boolean>(false);
 
   return (
     <View style={[styles.container]}>
@@ -132,7 +93,7 @@ export const Input = ({
           styles.inputWrapper,
           variantStyles[type],
           isFocused ? styles.active : styles.inactive,
-          (isValid === false && value) || isEmptyOnSubmit ? styles.error : null,
+          isValid === false || isEmptyOnSubmit ? styles.error : null,
           iconLeft || iconRight
             ? styles.defaultGap
             : type === 'small'
@@ -156,19 +117,9 @@ export const Input = ({
           onChangeText={onChangeText}
           autoComplete="off"
           secureTextEntry={isSecureTextEntry}
-          onFocus={() => {
-            if (isOnFocus) {
-              setIsFocused(true);
-            }
-          }}
-          onBlur={() => {
-            if (isOnBlur) {
-              setIsFocused(false);
-            }
-          }}
-          onKeyPress={() => {
-            if (onKeyPress) onKeyPress();
-          }}
+          onFocus={onFocus ? onFocus : undefined}
+          onBlur={onBlur ? onBlur : undefined}
+          onKeyPress={onKeyPress ? onKeyPress : undefined}
           autoCapitalize={autoCapitalize}
           autoCorrect={false}
           keyboardType={keyboardType}
@@ -176,6 +127,8 @@ export const Input = ({
         />
         {iconRight ? iconRight : null}
       </View>
+
+      {warningText?.length ? <Text style={styles.warningText}>{warningText}</Text> : null}
     </View>
   );
 };
