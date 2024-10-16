@@ -1,16 +1,14 @@
-\*\*\* - TODO -
+_- TODO -_
 
 - TODO: ! Write documentation of button properties
-- TODO: should I make an "Accordion" styled input, and how it is going to look ?
-- TODO: Strange outline on input
-- TODO: ! Somehow check how the icons resolution behaves on IOS and Android
-- TODO: Look at how to do a pull request.
-- TODO: What is TAG in Accordion ?
 - TODO: Should I have hardcoded width on a Button component ????
+- TODO: should I make an "Accordion" styled input, and how it is going to look ?
+- TODO: ! Somehow check how the icons resolution behaves on IOS and Android
+- TODO: What is TAG in Accordion ?
+- TODO: How is Header, StatusBar supposed to be implemented Headers, Misc ????
+- TODO: Is StatusBar supposed to be implemented using 'expo-status-bar'
 
--TODO: Headers, Misc ????
-
-\*\*\* --- DONE ---
+_- DONE -_
 
 - !!! When you set fullwidth, text is not in the center !!! - DONE
 - Apply font to the code !!! - DONE -----
@@ -29,6 +27,8 @@
 
 - Input full width, sizes only for height -> DONE
 - How can I check if the styles apply when input is focused -> DONE
+- Strange outline on input -> it can be removed in web version, but check IOS and Android -> DONE
+- Look at how to do a pull request. -> DONE
 
 ---
 

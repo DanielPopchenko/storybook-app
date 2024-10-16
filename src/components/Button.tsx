@@ -18,9 +18,7 @@ import { ButtonProps } from '../types/button.type';
 import { styles } from '../styles/button.styles';
 
 export const Button = ({
-  // ! figure out the type and use
   children = 'Button Name',
-  // TODO: done
   textColor = NEUTRAL_WHITE_50,
   onPress,
   type = 'defaultSecondary',

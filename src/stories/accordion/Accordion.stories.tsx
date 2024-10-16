@@ -1,9 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react';
-import SEARCH_ICON from '../../assets/search.png';
 import HELP_ICON from '../../assets/help.png';
 import PHONE_ICON from '../../assets/phone.png';
 import { Image } from 'react-native';
-import { NEUTRAL_BLACK_900, PRIMARY_BLUE_900 } from '../../utils/colors';
+import { PRIMARY_BLUE_900 } from '../../utils/colors';
 import { styles } from '../../styles/input.styles';
 import Accordion from '../../components/Accordion';
 

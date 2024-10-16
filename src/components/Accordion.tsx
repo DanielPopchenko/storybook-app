@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import {
-  NEUTRAL_BLACK_900,
-  NEUTRAL_GRAY_500,
-  NEUTRAL_WHITE_100,
-  NEUTRAL_WHITE_50,
-} from '../utils/colors';
+import { View, Text, TouchableOpacity } from 'react-native';
+import { styles } from '../styles/accordion.styles';
 
 type AccordionItemProps = {
   title: string;
@@ -23,13 +18,14 @@ const AccordionItem = ({
   iconOpen,
   iconClose,
   iconLeft,
+  ...props
 }: AccordionItemProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   // !!! styles for icons and views
   return (
     <View style={[styles.item, length > 1 ? styles.margin : null]}>
-      <TouchableOpacity onPress={() => setIsOpen(!isOpen)}>
+      <TouchableOpacity onPress={() => setIsOpen(!isOpen)} {...props}>
         <View style={styles.header}>
           <View style={styles.grouped}>
             {iconLeft ? iconLeft : null}
@@ -49,8 +45,14 @@ const AccordionItem = ({
   );
 };
 
+interface IData {
+  id: string;
+  title: string;
+  content: any;
+}
+
 type AccordionProps = {
-  data: { id: string; title: string; content: any }[];
+  data: IData[];
   iconLeft: React.ReactNode;
   iconOpen: React.ReactNode;
   iconClose: React.ReactNode;
@@ -58,7 +60,7 @@ type AccordionProps = {
 
 const Accordion = ({ data, iconLeft, iconClose, iconOpen, ...props }: AccordionProps) => {
   return (
-    <View style={styles.container} {...props}>
+    <View style={styles.container}>
       {data.map((item) => (
         <AccordionItem
           key={item.id}
@@ -68,59 +70,11 @@ const Accordion = ({ data, iconLeft, iconClose, iconOpen, ...props }: AccordionP
           iconLeft={iconLeft}
           iconClose={iconClose}
           iconOpen={iconOpen}
+          {...props}
         />
       ))}
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  icon: {
-    resizeMode: 'contain',
-    height: 18,
-    width: 18,
-  },
-  container: {
-    padding: 16,
-    backgroundColor: NEUTRAL_WHITE_100,
-    borderRadius: 10,
-  },
-  item: {
-    display: 'flex',
-    // alignItems: 'center',
-    // justifyContent: 'flex-start',
-    // flexDirection: 'column',
-    padding: 16,
-    backgroundColor: NEUTRAL_WHITE_50,
-    borderRadius: 10,
-  },
-  margin: {
-    marginTop: 8,
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    display: 'flex',
-  },
-  title: {
-    color: NEUTRAL_BLACK_900,
-    fontSize: 15,
-    fontWeight: 500,
-  },
-  text: {
-    color: NEUTRAL_GRAY_500,
-  },
-  content: {
-    // padding: 10,
-    marginTop: 16,
-  },
-  grouped: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
-  },
-});
 
 export default Accordion;

@@ -202,31 +202,6 @@ export const DefaultIconRight: StoryObj<typeof Input> = {
   render: (args) => <Input {...args} />,
 };
 
-export const DefaultIconRightLeft: StoryObj<typeof Input> = {
-  args: {
-    type: 'default',
-    placeholder: 'Default placeholder',
-    iconRight: (
-      <Image
-        source={{ uri: SEARCH_ICON }}
-        resizeMode="contain"
-        tintColor={PRIMARY_BLUE_900}
-        style={styles.icon}
-      />
-    ),
-    iconLeft: (
-      <Image
-        source={{ uri: SEARCH_ICON }}
-        resizeMode="contain"
-        tintColor={PRIMARY_BLUE_900}
-        style={styles.icon}
-      />
-    ),
-  },
-
-  render: (args) => <Input {...args} />,
-};
-
 export const TwoIcons: StoryObj<typeof Input> = {
   args: {
     type: 'default',
@@ -248,15 +223,6 @@ export const TwoIcons: StoryObj<typeof Input> = {
         style={styles.icon}
       />
     ),
-  },
-
-  render: (args) => <Input {...args} />,
-};
-
-export const LargeFullWidth: StoryObj<typeof Input> = {
-  args: {
-    type: 'large',
-    placeholder: 'Default placeholder',
   },
 
   render: (args) => <Input {...args} />,
