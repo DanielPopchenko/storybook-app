@@ -1,14 +1,23 @@
 _- TODO -_
 
 - TODO: ! Write documentation of button properties
-- TODO: Should I have hardcoded width on a Button component ????
+
+---
+
+- Launch storybook on mobile
+
+- TODO: Should I have hardcoded width on a Button component ???? (see MainWarningWrapped story) or the width is going to be set by a container?
+
 - TODO: should I make an "Accordion" styled input, and how it is going to look ?
 - TODO: ! Somehow check how the icons resolution behaves on IOS and Android
+
 - TODO: What is TAG in Accordion ?
 - TODO: How is Header, StatusBar supposed to be implemented Headers, Misc ????
 - TODO: Is StatusBar supposed to be implemented using 'expo-status-bar'
 
-_- DONE -_
+- TODO: GIT: Pull requests & Your main branch isn't protected
+
+  _- DONE -_
 
 - !!! When you set fullwidth, text is not in the center !!! - DONE
 - Apply font to the code !!! - DONE -----
