@@ -61,10 +61,6 @@ const meta: Meta<typeof Button> = {
       description: 'Boolean property to set disabled property on a button',
       type: 'boolean',
     },
-    isFullWidth: {
-      description: 'Boolean property to set the full width of the button',
-      type: 'boolean',
-    },
     onPress: {
       description: 'Function to call when the button is pressed.',
       action: 'clicked',

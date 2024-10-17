@@ -27,7 +27,7 @@ export const Button = ({
   iconLeft,
   isRounded,
   isIconOnly,
-  isFullWidth,
+  // isFullWidth,
   ...props
 }: ButtonProps) => {
   const variantStyles: Record<ButtonProps['type'], ViewStyle | TextStyle> = {
@@ -97,7 +97,7 @@ export const Button = ({
       borderColor: NEUTRAL_WHITE_150,
       color: NEUTRAL_BLACK_900,
       backgroundColor: NEUTRAL_WHITE_50,
-      minWidth: 322,
+      // minWidth: 322,
     },
     tertiary: {
       backgroundColor: PRIMARY_BLUE_50,
@@ -122,8 +122,9 @@ export const Button = ({
           variantStyles[type],
           iconLeft || iconRight ? styles.gap : null,
           isIconOnly || type === 'play' ? styles.iconOnly : null,
-          isFullWidth ? styles.fullWidth : null,
-          isFullWidth && !iconLeft && !iconRight ? styles.contentCentered : null,
+          // isFullWidth ? styles.fullWidth : null,
+          styles.fullWidth,
+          !iconLeft && !iconRight ? styles.contentCentered : null,
         ]}
         {...props}
       >
@@ -136,7 +137,7 @@ export const Button = ({
         >
           {iconLeft && type !== 'card' ? iconLeft : null}
 
-          {isFullWidth && !iconLeft && !iconRight ? null : (
+          {!iconLeft && !iconRight ? null : (
             <Text
               style={{
                 ...styles.buttonText,
@@ -150,7 +151,7 @@ export const Button = ({
           )}
         </View>
 
-        {isFullWidth && !iconLeft && !iconRight ? (
+        {!iconLeft && !iconRight ? (
           <Text
             style={{
               ...styles.buttonText,

@@ -1,19 +1,20 @@
 _- TODO -_
 
-- TODO: ! Write documentation of button properties
+- TODO: different expo native project and use stories there
+- TODO: ! No width in button -> make it stretch to the width of block -> DONE
+- TODO: Different story inputWithSearch (see screenshot)
+- TODO: What is TAG in Accordion ? -> Ask Alana
 
 ---
 
-- Launch storybook on mobile
-
+- TODO: ! Write documentation of button properties
 - TODO: Should I have hardcoded width on a Button component ???? (see MainWarningWrapped story) or the width is going to be set by a container?
 
 - TODO: should I make an "Accordion" styled input, and how it is going to look ?
 - TODO: ! Somehow check how the icons resolution behaves on IOS and Android
 
-- TODO: What is TAG in Accordion ?
-- TODO: How is Header, StatusBar supposed to be implemented Headers, Misc ????
-- TODO: Is StatusBar supposed to be implemented using 'expo-status-bar'
+- TODO: How is Header, StatusBar supposed to be implemented Headers, Misc ???? -> Do not need
+- TODO: Is StatusBar supposed to be implemented using 'expo-status-bar' ->
 
 - TODO: GIT: Pull requests & Your main branch isn't protected
 
