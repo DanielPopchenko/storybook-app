@@ -3,6 +3,8 @@ _- TODO -_
 - TODO: different expo native project and use stories there
 - TODO: ! No width in button -> make it stretch to the width of block -> DONE
 - TODO: Different story inputWithSearch (see screenshot)
+
+- TODO: type onChangeText
 - TODO: What is TAG in Accordion ? -> Ask Alana
 
 ---
