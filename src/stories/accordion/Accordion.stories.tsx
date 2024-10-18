@@ -13,11 +13,31 @@ const meta: Meta<typeof Accordion> = {
   parameters: {
     docs: {
       description: {
-        component: 'A customizable button component for React Native.',
+        component: 'A customizable Accordion component for React Native.',
       },
     },
   },
-  argTypes: {},
+  argTypes: {
+    data: {
+      control: 'object',
+      discription:
+        'Set a data object to display accordion items. Each object (item) takes "title" and "content" inside.',
+    },
+    iconLeft: {
+      control: 'object',
+      discription: 'Set an icon that is going to be on left of your Accordion component.',
+    },
+    iconClose: {
+      control: 'object',
+      discription:
+        'Set a close icon that is going to be displayed when Accordion component is opened.',
+    },
+    iconOpen: {
+      control: 'object',
+      discription:
+        'Set an open icon that is going to be displayed when Accordion component is closed.',
+    },
+  },
 };
 
 export default meta;
@@ -26,14 +46,13 @@ export default meta;
 export const Default: StoryObj<typeof Accordion> = {
   args: {
     data: [
-      { id: '1', title: 'Accordion Name - 1', content: 'Text' },
+      { title: 'Accordion Name - 1', content: 'Text' },
       {
-        id: '2',
         title: 'Accordion Name - 2',
         content:
           'Accordion Name - 2 Accordion Name - 2 Accordion Name - 2 Accordion Name - 2 Accordion Name - 2',
       },
-      { id: '3', title: 'Accordion Name - 3', content: 'Text' },
+      { title: 'Accordion Name - 3', content: 'Text' },
     ],
     iconLeft: (
       <Image

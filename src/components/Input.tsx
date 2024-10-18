@@ -42,21 +42,8 @@ export const Input = ({
   return (
     <View style={[styles.container]}>
       {label ? (
-        // * Dynamic styles for label container, because it stretches to full with
-        <View
-          // style={
-          //   type === 'default'
-          //     ? [styles.defaultLabelContainer, variantStyles['default']]
-          //     : type === 'large'
-          //     ? [styles.defaultLabelContainer, variantStyles['large']]
-          //     : type === 'small'
-          //     ? [styles.defaultLabelContainer, variantStyles['small']]
-          //     : null
-          // }
-          style={styles.labelContainer}
-        >
+        <View style={styles.labelContainer}>
           <Text style={[styles.labelText]}>{label}</Text>
-
           {showHelp ? (
             <TouchableOpacity onPress={handleHelp} style={styles.helpIconContainer}>
               {helpIcon}
@@ -76,7 +63,6 @@ export const Input = ({
             : styles.inactive,
 
           iconLeft || iconRight ? styles.defaultGap : null,
-          // isFullWidth ? { width: '100%', maxWidth: '100%' } : null,
         ]}
       >
         {iconLeft ? iconLeft : null}

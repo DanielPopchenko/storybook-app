@@ -1,15 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { styles } from '../styles/accordion.styles';
-
-type AccordionItemProps = {
-  title: string;
-  content: any;
-  length: number;
-  iconLeft: React.ReactNode;
-  iconOpen: React.ReactNode;
-  iconClose: React.ReactNode;
-};
+import { AccordionProps, AccordionItemProps } from '../types/accordion.types';
 
 const AccordionItem = ({
   title,
@@ -45,25 +37,12 @@ const AccordionItem = ({
   );
 };
 
-interface IData {
-  id: string;
-  title: string;
-  content: any;
-}
-
-type AccordionProps = {
-  data: IData[];
-  iconLeft: React.ReactNode;
-  iconOpen: React.ReactNode;
-  iconClose: React.ReactNode;
-};
-
 const Accordion = ({ data, iconLeft, iconClose, iconOpen, ...props }: AccordionProps) => {
   return (
     <View style={styles.container}>
       {data.map((item) => (
         <AccordionItem
-          key={item.id}
+          key={item.title}
           title={item.title}
           content={item.content}
           length={data.length}

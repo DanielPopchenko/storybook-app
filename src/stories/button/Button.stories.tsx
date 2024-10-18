@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Image } from 'react-native';
+import { Image, View } from 'react-native';
 import {
   NEUTRAL_GRAY_200,
   PRIMARY_BLUE_900,
@@ -22,7 +22,7 @@ const meta: Meta<typeof Button> = {
   parameters: {
     docs: {
       description: {
-        component: 'A customizable button component for React Native.',
+        component: 'A customizable Button component for React Native.',
       },
     },
   },
@@ -59,10 +59,6 @@ const meta: Meta<typeof Button> = {
     },
     isDisabled: {
       description: 'Boolean property to set disabled property on a button',
-      type: 'boolean',
-    },
-    isFullWidth: {
-      description: 'Boolean property to set the full width of the button',
       type: 'boolean',
     },
     onPress: {
@@ -122,6 +118,27 @@ export const MainWarning: StoryObj<typeof Button> = {
     ),
   },
   render: (args) => <Button {...args}>{args.children}</Button>,
+};
+
+export const MainWarningWrapped: StoryObj<typeof Button> = {
+  args: {
+    type: 'danger',
+    isRounded: true,
+    textColor: NEUTRAL_WHITE_150,
+    iconRight: (
+      <Image
+        source={{ uri: ARROW_RIGHT_ICON }}
+        resizeMode="contain"
+        tintColor={NEUTRAL_WHITE_150}
+        style={styles.icon}
+      />
+    ),
+  },
+  render: (args) => (
+    <View style={{ width: 250, height: 'auto' }}>
+      <Button {...args}>{args.children}</Button>
+    </View>
+  ),
 };
 
 export const Tertiary: StoryObj<typeof Button> = {

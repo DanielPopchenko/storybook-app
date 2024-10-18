@@ -1,7 +1,6 @@
 import React from 'react';
 
 export type ButtonProps = {
-  // ! make text a children prop
   children: string;
   textColor?: string;
   onPress?: () => void;
@@ -24,5 +23,4 @@ export type ButtonProps = {
   iconLeft?: React.ReactNode;
   isRounded?: boolean;
   isIconOnly?: boolean;
-  isFullWidth?: boolean;
 };
