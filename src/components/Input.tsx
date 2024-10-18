@@ -63,7 +63,6 @@ export const Input = ({
             : styles.inactive,
 
           iconLeft || iconRight ? styles.defaultGap : null,
-          // isFullWidth ? { width: '100%', maxWidth: '100%' } : null,
         ]}
       >
         {iconLeft ? iconLeft : null}

@@ -24,3 +24,15 @@ export type InputProps = {
   isEmptyOnSubmit?: boolean;
   isFullWidth?: boolean;
 };
+
+export type InputWithSearchProps = {
+  placeholder: string;
+  value: string;
+  onChange: (string: string) => void;
+  onSearch: () => void;
+  options: { label: string; value: string }[];
+  iconRight?: React.ReactNode;
+  iconOpen?: React.ReactNode;
+  iconClose?: React.ReactNode;
+  label: string;
+};

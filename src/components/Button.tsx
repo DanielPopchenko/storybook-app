@@ -122,7 +122,7 @@ export const Button = ({
           variantStyles[type],
           iconLeft || iconRight ? styles.gap : null,
           isIconOnly || type === 'play' ? styles.iconOnly : null,
-          // isFullWidth ? styles.fullWidth : null,
+
           styles.fullWidth,
           !iconLeft && !iconRight ? styles.contentCentered : null,
         ]}

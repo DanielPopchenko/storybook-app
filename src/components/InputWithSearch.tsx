@@ -1,18 +1,7 @@
-import { View, Text, TextInput, Pressable, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { styles } from '../styles/inputWithSearch.styles';
-import React, { useState } from 'react';
-
-type InputWithSearchProps = {
-  placeholder: string;
-  value: string;
-  onChange: (string: string) => void;
-  onSearch: () => void;
-  options: { label: string; value: string }[];
-  iconRight?: React.ReactNode;
-  iconOpen?: React.ReactNode;
-  iconClose?: React.ReactNode;
-  label: string;
-};
+import { useState } from 'react';
+import { InputWithSearchProps } from '../types/input.types';
 
 export const InputWithSearch = ({
   value,

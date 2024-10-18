@@ -4,7 +4,7 @@ import SEARCH_ICON from '../../assets/search.png';
 import HELP_ICON from '../../assets/help.png';
 import PHONE_ICON from '../../assets/phone.png';
 import { Image } from 'react-native';
-import { NEUTRAL_BLACK_900, PRIMARY_BLUE_900 } from '../../utils/colors';
+import { PRIMARY_BLUE_900 } from '../../utils/colors';
 import { styles } from '../../styles/inputWithSearch.styles';
 
 const meta: Meta<typeof InputWithSearch> = {
@@ -14,7 +14,7 @@ const meta: Meta<typeof InputWithSearch> = {
   parameters: {
     docs: {
       description: {
-        component: 'A customizable Input With Search component for React Native.',
+        component: 'A customizable Input with search component for React Native.',
       },
     },
   },

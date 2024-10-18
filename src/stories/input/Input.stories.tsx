@@ -4,7 +4,7 @@ import SEARCH_ICON from '../../assets/search.png';
 import HELP_ICON from '../../assets/help.png';
 import PHONE_ICON from '../../assets/phone.png';
 import { Image } from 'react-native';
-import { NEUTRAL_BLACK_900, PRIMARY_BLUE_900 } from '../../utils/colors';
+import { PRIMARY_BLUE_900 } from '../../utils/colors';
 import { styles } from '../../styles/input.styles';
 
 const meta: Meta<typeof Input> = {
@@ -14,7 +14,7 @@ const meta: Meta<typeof Input> = {
   parameters: {
     docs: {
       description: {
-        component: 'A customizable button component for React Native.',
+        component: 'A customizable Input component for React Native.',
       },
     },
   },
@@ -133,16 +133,6 @@ export const Default: StoryObj<typeof Input> = {
         source={{ uri: SEARCH_ICON }}
       />
     ),
-    // iconRight: (
-    //   <Image
-    //     resizeMode="contain"
-    //     tintColor={PRIMARY_BLUE_900}
-    //     style={styles.icon}
-    //     source={{ uri: SEARCH_ICON }}
-    //   />
-    // ),
-    // value: value,
-    // onChange: () => setValue,
   },
   render: (args) => <Input {...args} />,
 };

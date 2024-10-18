@@ -39,7 +39,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     gap: 12,
-    // flexShrink: 0,
     borderRadius: 5,
     flex: 1,
   },
@@ -61,7 +60,6 @@ export const styles = StyleSheet.create({
     fontSize: 15,
     fontStyle: 'normal',
     fontWeight: 500,
-    // lineHeight: 150,
   },
   buttonContainer: {
     alignItems: 'flex-start',

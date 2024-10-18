@@ -3,7 +3,6 @@ import {
   NEUTRAL_WHITE_50,
   NEUTRAL_WHITE_150,
   NEUTRAL_BLACK_900,
-  NEUTRAL_GRAY_200,
   PRIMARY_BLUE_900,
 } from '../utils/colors';
 
@@ -31,7 +30,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     backgroundColor: NEUTRAL_WHITE_50,
     paddingHorizontal: 12,
-    // paddingVertical: 12,
     overflow: 'hidden',
 
     borderRadius: 8,
