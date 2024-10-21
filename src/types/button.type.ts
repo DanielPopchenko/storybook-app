@@ -23,4 +23,5 @@ export type ButtonProps = {
   iconLeft?: React.ReactNode;
   isRounded?: boolean;
   isIconOnly?: boolean;
+  fontSize?: number;
 };

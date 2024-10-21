@@ -268,3 +268,35 @@ export const PlayBlack: StoryObj<typeof Button> = {
   },
   render: (args) => <Button {...args}>{args.children}</Button>,
 };
+
+export const IconOnlyDefault: StoryObj<typeof Button> = {
+  args: {
+    type: 'default',
+    iconRight: (
+      <Image
+        source={{ uri: PHARMACY_ICON }}
+        resizeMode="contain"
+        style={styles.icon}
+        tintColor={NEUTRAL_WHITE_50}
+      />
+    ),
+    isIconOnly: true,
+  },
+  render: (args) => <Button {...args}>{args.children}</Button>,
+};
+
+export const IconOnlyOutline: StoryObj<typeof Button> = {
+  args: {
+    type: 'outline',
+    iconRight: (
+      <Image
+        source={{ uri: PHARMACY_ICON }}
+        resizeMode="contain"
+        style={styles.icon}
+        tintColor={NEUTRAL_BLACK_900}
+      />
+    ),
+    isIconOnly: true,
+  },
+  render: (args) => <Button {...args}>{args.children}</Button>,
+};

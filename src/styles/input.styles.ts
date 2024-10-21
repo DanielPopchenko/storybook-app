@@ -22,7 +22,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     backgroundColor: NEUTRAL_WHITE_50,
     paddingHorizontal: 12,
-    // paddingVertical: 12,
     overflow: 'hidden',
 
     borderRadius: 8,
@@ -42,7 +41,7 @@ export const styles = StyleSheet.create({
     fontFamily: 'Manrope',
     fontSize: 11,
     fontStyle: 'normal',
-    fontWeight: 500,
+    fontWeight: '500',
   },
 
   warningText: {
@@ -69,7 +68,7 @@ export const styles = StyleSheet.create({
   labelText: {
     fontSize: 15,
     fontStyle: 'normal',
-    fontWeight: 700,
+    fontWeight: '700',
     color: NEUTRAL_BLACK_900,
     display: 'flex',
   },
@@ -93,7 +92,7 @@ export const styles = StyleSheet.create({
   },
   largeText: {
     fontSize: 15,
-    fontWeight: 500,
+    fontWeight: '500',
   },
   smallText: {
     fontSize: 11.25,

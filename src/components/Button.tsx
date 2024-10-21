@@ -12,7 +12,6 @@ import {
   SECONDARY_YELLOW_700,
   NEUTRAL_BLACK_900,
   PRIMARY_BLUE_50,
-  SECONDARY_RED_800,
 } from '../utils/colors';
 
 import { ButtonProps } from '../types/button.type';
@@ -28,6 +27,7 @@ export const Button = ({
   iconLeft,
   isRounded,
   isIconOnly,
+  fontSize = 15,
   ...props
 }: ButtonProps) => {
   const variantStyles: Record<ButtonProps['type'], ViewStyle | TextStyle> = {
@@ -90,7 +90,6 @@ export const Button = ({
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: SECONDARY_RED_800,
     },
     boxed: {
       borderRadius: 10,
@@ -119,12 +118,12 @@ export const Button = ({
         onPress={onPress}
         style={[
           styles.button,
+          styles.fullWidth,
           isRounded ? styles.rounded : null,
           variantStyles[type],
           iconLeft || iconRight ? styles.gap : null,
           isIconOnly || type === 'play' ? styles.iconOnly : null,
 
-          styles.fullWidth,
           !iconLeft && !iconRight ? styles.contentCentered : null,
         ]}
         {...props}
@@ -159,6 +158,7 @@ export const Button = ({
               color: textColor,
               ...outlineTextStyle,
               ...activeBtnStyles,
+              fontSize: fontSize,
             }}
           >
             {isIconOnly || type === 'play' ? null : children}

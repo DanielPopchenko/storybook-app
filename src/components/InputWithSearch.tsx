@@ -34,7 +34,7 @@ export const InputWithSearch = ({
           <View style={styles.inputWrapper}>
             <TextInput
               value={value}
-              onChange={onSearch}
+              onChangeText={onSearch}
               placeholder={placeholder}
               style={styles.textInput}
             />

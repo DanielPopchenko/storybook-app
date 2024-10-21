@@ -43,23 +43,24 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   buttonTextBold: {
-    fontWeight: 700,
+    fontWeight: '700',
   },
   iconOnly: {
     borderRadius: 50,
-    paddingHorizontal: 11,
     margin: 0,
+    // padding: 16,
     gap: 0,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    width: 50,
+    height: 50,
   },
   buttonText: {
     textAlign: 'center',
     fontFamily: 'Manrope, sans-serif',
-    fontSize: 15,
     fontStyle: 'normal',
-    fontWeight: 500,
+    fontWeight: '500',
   },
   buttonContainer: {
     alignItems: 'flex-start',

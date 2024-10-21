@@ -20,6 +20,7 @@ export const styles = StyleSheet.create({
   containerActive: {
     borderColor: PRIMARY_BLUE_900,
   },
+
   inputWrapper: {
     flex: 1,
     display: 'flex',
@@ -63,7 +64,11 @@ export const styles = StyleSheet.create({
   labelText: {
     color: NEUTRAL_BLACK_900,
     fontSize: 15,
-    // fontWeight: 500, // commented to test
+    fontWeight: '500',
+  },
+
+  active: {
+    borderColor: PRIMARY_BLUE_900,
   },
 
   textInput: {

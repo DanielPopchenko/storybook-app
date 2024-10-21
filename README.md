@@ -1,13 +1,15 @@
 _- TODO -_
 
-PRIORITY -> TODO: Look at iconOnly property, make a new type, iconOnly
+PRIORITY -> TODO: Look at iconOnly property, fix the styles -> added dynamic fz
 
-- TODO: Ask if InputWithSearch is supposed to work the way it`s working now
-
-- TODO: ANDROID Problem with -> Error while updating property 'fontWeight' in shadow node of type: Android TextInput. java.lang.Double cannot be cast to java.lang.String
+- !! fw as string
+- TODO: make an outline in input search - DONE
+- TODO: default button -> more dynamic properties
+- TODO: Play button -> icon separate, different backgrounds
 
   _- DONE -_
 
+- ANDROID Problem with -> Error while updating property 'fontWeight' in shadow node of type: Android TextInput. java.lang.Double cannot be cast to java.lang.String -> Fixed (just removed this property from there)
 - Different story inputWithSearch (see screenshot)
 - No width in button -> make it stretch to the width of block -> DONE
 - What is TAG in Accordion ? -> Ask Alana

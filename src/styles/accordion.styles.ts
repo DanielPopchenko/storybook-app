@@ -35,7 +35,7 @@ export const styles = StyleSheet.create({
   title: {
     color: NEUTRAL_BLACK_900,
     fontSize: 15,
-    fontWeight: 500,
+    fontWeight: '500',
   },
   text: {
     color: NEUTRAL_GRAY_500,
