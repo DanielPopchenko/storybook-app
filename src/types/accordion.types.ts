@@ -14,7 +14,7 @@ export interface IData {
 
 export type AccordionProps = {
   data: IData[];
-  iconLeft: React.ReactNode;
-  iconOpen: React.ReactNode;
-  iconClose: React.ReactNode;
+  iconLeft?: React.ReactNode;
+  iconOpen?: React.ReactNode;
+  iconClose?: React.ReactNode;
 };

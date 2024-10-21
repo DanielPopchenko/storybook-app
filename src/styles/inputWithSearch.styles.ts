@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
 
-    minHeight: 42,
+    minHeight: 56,
     justifyContent: 'space-between',
     backgroundColor: NEUTRAL_WHITE_50,
     paddingHorizontal: 12,
@@ -63,7 +63,7 @@ export const styles = StyleSheet.create({
   labelText: {
     color: NEUTRAL_BLACK_900,
     fontSize: 15,
-    fontWeight: 500,
+    // fontWeight: 500, // commented to test
   },
 
   textInput: {

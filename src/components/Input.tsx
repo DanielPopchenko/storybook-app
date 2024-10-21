@@ -31,7 +31,6 @@ export const Input = ({
   handleHelp,
   isValid,
   isEmptyOnSubmit,
-  isFullWidth,
   ...props
 }: InputProps) => {
   const variantStyles: Record<InputProps['type'], ViewStyle | TextStyle> = {

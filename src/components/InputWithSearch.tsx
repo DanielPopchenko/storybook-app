@@ -48,7 +48,7 @@ export const InputWithSearch = ({
                     key={option.value}
                     style={styles.option}
                   >
-                    {option.label}
+                    <Text>{option.label}</Text>
                   </TouchableOpacity>
                 ))
               : null}

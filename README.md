@@ -1,27 +1,17 @@
 _- TODO -_
 
-- TODO: different expo native project and use stories there
-- TODO: ! No width in button -> make it stretch to the width of block -> DONE
-- TODO: Different story inputWithSearch (see screenshot)
+PRIORITY -> TODO: Look at iconOnly property, make a new type, iconOnly
 
-- TODO: type onChangeText
-- TODO: What is TAG in Accordion ? -> Ask Alana
+- TODO: Ask if InputWithSearch is supposed to work the way it`s working now
 
----
-
-- TODO: ! Write documentation of button properties
-- TODO: Should I have hardcoded width on a Button component ???? (see MainWarningWrapped story) or the width is going to be set by a container?
-
-- TODO: should I make an "Accordion" styled input, and how it is going to look ?
-- TODO: ! Somehow check how the icons resolution behaves on IOS and Android
-
-- TODO: How is Header, StatusBar supposed to be implemented Headers, Misc ???? -> Do not need
-- TODO: Is StatusBar supposed to be implemented using 'expo-status-bar' ->
-
-- TODO: GIT: Pull requests & Your main branch isn't protected
+- TODO: ANDROID Problem with -> Error while updating property 'fontWeight' in shadow node of type: Android TextInput. java.lang.Double cannot be cast to java.lang.String
 
   _- DONE -_
 
+- Different story inputWithSearch (see screenshot)
+- No width in button -> make it stretch to the width of block -> DONE
+- What is TAG in Accordion ? -> Ask Alana
+- move components folder to the expo project and see how components behave there -> DONE
 - !!! When you set fullwidth, text is not in the center !!! - DONE
 - Apply font to the code !!! - DONE -----
 - Make buttons with icons - DONE -----

@@ -12,6 +12,7 @@ import {
   SECONDARY_YELLOW_700,
   NEUTRAL_BLACK_900,
   PRIMARY_BLUE_50,
+  SECONDARY_RED_800,
 } from '../utils/colors';
 
 import { ButtonProps } from '../types/button.type';
@@ -27,7 +28,6 @@ export const Button = ({
   iconLeft,
   isRounded,
   isIconOnly,
-  // isFullWidth,
   ...props
 }: ButtonProps) => {
   const variantStyles: Record<ButtonProps['type'], ViewStyle | TextStyle> = {
@@ -90,14 +90,15 @@ export const Button = ({
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
+      backgroundColor: SECONDARY_RED_800,
     },
     boxed: {
       borderRadius: 10,
       borderWidth: 1,
+      minHeight: 70,
       borderColor: NEUTRAL_WHITE_150,
       color: NEUTRAL_BLACK_900,
       backgroundColor: NEUTRAL_WHITE_50,
-      // minWidth: 322,
     },
     tertiary: {
       backgroundColor: PRIMARY_BLUE_50,

@@ -1,7 +1,7 @@
 import React from 'react';
 
 export type ButtonProps = {
-  children: string;
+  children?: string;
   textColor?: string;
   onPress?: () => void;
   type:

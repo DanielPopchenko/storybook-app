@@ -22,7 +22,6 @@ export type InputProps = {
   showHelp?: boolean;
   isValid?: boolean;
   isEmptyOnSubmit?: boolean;
-  isFullWidth?: boolean;
 };
 
 export type InputWithSearchProps = {
