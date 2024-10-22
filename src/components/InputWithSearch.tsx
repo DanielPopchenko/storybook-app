@@ -3,11 +3,18 @@ import { styles } from '../styles/inputWithSearch.styles';
 import { useState, useEffect } from 'react';
 import { InputWithSearchProps } from '../types/input.types';
 
+const contains = (option: { label: string; value: string }, query: string) => {
+  const { label } = option;
+  if (label.toLowerCase().includes(query)) {
+    return true;
+  }
+  return false;
+};
+
 export const InputWithSearch = ({
   searchValue,
   placeholder,
   options,
-  // onSearch,
   onChange,
   iconRight,
   iconClose,
@@ -21,7 +28,7 @@ export const InputWithSearch = ({
 
   useEffect(() => {
     setData(options);
-  }, []);
+  }, [options]);
 
   const handleOnChange = (query: string) => {
     onChange(query);
@@ -37,14 +44,6 @@ export const InputWithSearch = ({
   const handleOnPress = (query: string) => {
     handleOnChange(query);
     setIsShowOptions(false);
-  };
-
-  const contains = (option: { label: string; value: string }, query: string) => {
-    const { label } = option;
-    if (label.toLowerCase().includes(query)) {
-      return true;
-    }
-    return false;
   };
 
   return (
