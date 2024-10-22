@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Image } from 'react-native';
+import { Image, View } from 'react-native';
 import {
   NEUTRAL_GRAY_200,
   PRIMARY_BLUE_900,
@@ -22,7 +22,7 @@ const meta: Meta<typeof Button> = {
   parameters: {
     docs: {
       description: {
-        component: 'A customizable button component for React Native.',
+        component: 'A customizable Button component for React Native.',
       },
     },
   },
@@ -32,7 +32,6 @@ const meta: Meta<typeof Button> = {
         'Children is a prop to set a text that you want to see inside the button',
       control: { type: 'text' },
     },
-    // ! Add types and check how they work together
     type: {
       description: 'Choose a type of a button to see different styling',
       options: [
@@ -57,12 +56,11 @@ const meta: Meta<typeof Button> = {
     textColor: {
       description: 'The text color you want to display inside the button.',
     },
+    fontSize: {
+      description: 'The font size property you want to change inside the button.',
+    },
     isDisabled: {
       description: 'Boolean property to set disabled property on a button',
-      type: 'boolean',
-    },
-    isFullWidth: {
-      description: 'Boolean property to set the full width of the button',
       type: 'boolean',
     },
     onPress: {
@@ -73,6 +71,14 @@ const meta: Meta<typeof Button> = {
 };
 
 export default meta;
+
+export const Default: StoryObj<typeof Button> = {
+  args: {
+    type: 'default',
+    children: 'Default Button',
+  },
+  render: (args) => <Button {...args}>{args.children}</Button>,
+};
 
 export const Outline: StoryObj<typeof Button> = {
   args: {
@@ -122,6 +128,27 @@ export const MainWarning: StoryObj<typeof Button> = {
     ),
   },
   render: (args) => <Button {...args}>{args.children}</Button>,
+};
+
+export const MainWarningWrapped: StoryObj<typeof Button> = {
+  args: {
+    type: 'danger',
+    isRounded: true,
+    textColor: NEUTRAL_WHITE_150,
+    iconRight: (
+      <Image
+        source={{ uri: ARROW_RIGHT_ICON }}
+        resizeMode="contain"
+        tintColor={NEUTRAL_WHITE_150}
+        style={styles.icon}
+      />
+    ),
+  },
+  render: (args) => (
+    <View style={{ width: 250, height: 'auto' }}>
+      <Button {...args}>{args.children}</Button>
+    </View>
+  ),
 };
 
 export const Tertiary: StoryObj<typeof Button> = {
@@ -194,15 +221,6 @@ export const SecondaryDisabledIconOnly: StoryObj<typeof Button> = {
   render: (args) => <Button {...args}>{args.children}</Button>,
 };
 
-export const MainDisabled: StoryObj<typeof Button> = {
-  args: {
-    textColor: NEUTRAL_WHITE_150,
-    type: 'disabled',
-    isDisabled: true,
-  },
-  render: (args) => <Button {...args}>{args.children}</Button>,
-};
-
 export const Boxed: StoryObj<typeof Button> = {
   args: {
     type: 'boxed',
@@ -248,6 +266,38 @@ export const PlayBlack: StoryObj<typeof Button> = {
         tintColor={NEUTRAL_BLACK_900}
       />
     ),
+  },
+  render: (args) => <Button {...args}>{args.children}</Button>,
+};
+
+export const IconOnlyDefault: StoryObj<typeof Button> = {
+  args: {
+    type: 'default',
+    iconRight: (
+      <Image
+        source={{ uri: PHARMACY_ICON }}
+        resizeMode="contain"
+        style={styles.icon}
+        tintColor={NEUTRAL_WHITE_50}
+      />
+    ),
+    isIconOnly: true,
+  },
+  render: (args) => <Button {...args}>{args.children}</Button>,
+};
+
+export const IconOnlyOutline: StoryObj<typeof Button> = {
+  args: {
+    type: 'outline',
+    iconRight: (
+      <Image
+        source={{ uri: PHARMACY_ICON }}
+        resizeMode="contain"
+        style={styles.icon}
+        tintColor={NEUTRAL_BLACK_900}
+      />
+    ),
+    isIconOnly: true,
   },
   render: (args) => <Button {...args}>{args.children}</Button>,
 };

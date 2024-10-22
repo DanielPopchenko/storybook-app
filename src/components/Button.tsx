@@ -21,13 +21,13 @@ export const Button = ({
   children = 'Button Name',
   textColor = NEUTRAL_WHITE_50,
   onPress,
-  type = 'defaultSecondary',
-  isDisabled,
+  type = 'default',
+  isDisabled = false,
   iconRight,
   iconLeft,
-  isRounded,
-  isIconOnly,
-  isFullWidth,
+  isRounded = false,
+  isIconOnly = false,
+  fontSize = 15,
   ...props
 }: ButtonProps) => {
   const variantStyles: Record<ButtonProps['type'], ViewStyle | TextStyle> = {
@@ -94,10 +94,10 @@ export const Button = ({
     boxed: {
       borderRadius: 10,
       borderWidth: 1,
+      minHeight: 70,
       borderColor: NEUTRAL_WHITE_150,
       color: NEUTRAL_BLACK_900,
       backgroundColor: NEUTRAL_WHITE_50,
-      minWidth: 322,
     },
     tertiary: {
       backgroundColor: PRIMARY_BLUE_50,
@@ -118,12 +118,13 @@ export const Button = ({
         onPress={onPress}
         style={[
           styles.button,
+          styles.fullWidth,
           isRounded ? styles.rounded : null,
           variantStyles[type],
           iconLeft || iconRight ? styles.gap : null,
           isIconOnly || type === 'play' ? styles.iconOnly : null,
-          isFullWidth ? styles.fullWidth : null,
-          isFullWidth && !iconLeft && !iconRight ? styles.contentCentered : null,
+
+          !iconLeft && !iconRight ? styles.contentCentered : null,
         ]}
         {...props}
       >
@@ -136,7 +137,7 @@ export const Button = ({
         >
           {iconLeft && type !== 'card' ? iconLeft : null}
 
-          {isFullWidth && !iconLeft && !iconRight ? null : (
+          {!iconLeft && !iconRight ? null : (
             <Text
               style={{
                 ...styles.buttonText,
@@ -150,13 +151,14 @@ export const Button = ({
           )}
         </View>
 
-        {isFullWidth && !iconLeft && !iconRight ? (
+        {!iconLeft && !iconRight ? (
           <Text
             style={{
               ...styles.buttonText,
               color: textColor,
               ...outlineTextStyle,
               ...activeBtnStyles,
+              fontSize: fontSize,
             }}
           >
             {isIconOnly || type === 'play' ? null : children}

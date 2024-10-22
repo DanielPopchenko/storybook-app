@@ -5,7 +5,7 @@ export type InputProps = {
   type: 'default' | 'large';
   value: string;
   placeholder: string;
-  onChangeText: any;
+  onChangeText: React.Dispatch<React.SetStateAction<string>>;
   onKeyPress?: () => void;
   onFocus?: ((e: NativeSyntheticEvent<TextInputFocusEventData>) => void) | undefined;
   onBlur?: ((e: NativeSyntheticEvent<TextInputFocusEventData>) => void) | undefined;
@@ -19,8 +19,18 @@ export type InputProps = {
   warningText?: string;
   isSecureTextEntry?: boolean;
   isFocused?: boolean;
-  showHelp?: boolean;
+
   isValid?: boolean;
   isEmptyOnSubmit?: boolean;
-  isFullWidth?: boolean;
+};
+
+export type InputWithSearchProps = {
+  placeholder: string;
+  searchValue: string;
+  onChange: React.Dispatch<React.SetStateAction<string>>;
+  options: { label: string; value: string }[];
+  iconRight?: React.ReactNode;
+  iconOpen?: React.ReactNode;
+  iconClose?: React.ReactNode;
+  label: string;
 };

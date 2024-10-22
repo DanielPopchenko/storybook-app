@@ -4,7 +4,7 @@ import SEARCH_ICON from '../../assets/search.png';
 import HELP_ICON from '../../assets/help.png';
 import PHONE_ICON from '../../assets/phone.png';
 import { Image } from 'react-native';
-import { NEUTRAL_BLACK_900, PRIMARY_BLUE_900 } from '../../utils/colors';
+import { PRIMARY_BLUE_900 } from '../../utils/colors';
 import { styles } from '../../styles/input.styles';
 
 const meta: Meta<typeof Input> = {
@@ -14,7 +14,7 @@ const meta: Meta<typeof Input> = {
   parameters: {
     docs: {
       description: {
-        component: 'A customizable button component for React Native.',
+        component: 'A customizable Input component for React Native.',
       },
     },
   },
@@ -46,17 +46,12 @@ const meta: Meta<typeof Input> = {
     onFocus: {
       control: 'object',
       description:
-        'This is an optional property to add a function that will be triggered on onFocus event.',
+        'This is an optional property to add a function that will be triggered on onFocus event. For example to set isFocused to true and change border styles while focused',
     },
     onBlur: {
       control: 'object',
       description:
-        'This is an optional property to add a function that will be triggered on onBlur event.',
-    },
-    showHelp: {
-      control: 'boolean',
-      description:
-        'This is an optional boolean property to choose wheather you want to add a help icon to your input.',
+        'This is an optional property to add a function that will be triggered on onBlur event. For example to set isFocused to false and change border styles while not in focus',
     },
     helpIcon: {
       control: 'object',
@@ -103,7 +98,7 @@ const meta: Meta<typeof Input> = {
     isFocused: {
       control: 'boolean',
       description:
-        'This is an optional boolean property to change input styles depending on isFocused propery set to true or false.',
+        'This is an optional boolean property to change input border styles depending on isFocused propery set to true or false.',
     },
     isValid: {
       control: 'boolean',
@@ -120,7 +115,6 @@ const meta: Meta<typeof Input> = {
 
 export default meta;
 
-// ! Review if onChange is working properly
 export const Default: StoryObj<typeof Input> = {
   args: {
     type: 'default',
@@ -133,16 +127,6 @@ export const Default: StoryObj<typeof Input> = {
         source={{ uri: SEARCH_ICON }}
       />
     ),
-    // iconRight: (
-    //   <Image
-    //     resizeMode="contain"
-    //     tintColor={PRIMARY_BLUE_900}
-    //     style={styles.icon}
-    //     source={{ uri: SEARCH_ICON }}
-    //   />
-    // ),
-    // value: value,
-    // onChange: () => setValue,
   },
   render: (args) => <Input {...args} />,
 };
@@ -177,7 +161,6 @@ export const DefaultLabeledHelp: StoryObj<typeof Input> = {
       />
     ),
     label: 'Name',
-    showHelp: true,
     helpIcon: (
       <Image resizeMode="contain" style={styles.icon} source={{ uri: HELP_ICON }} />
     ),

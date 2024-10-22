@@ -13,7 +13,6 @@ export const styles = StyleSheet.create({
     width: 18,
   },
   container: {
-    padding: 16,
     backgroundColor: NEUTRAL_WHITE_100,
     borderRadius: 10,
   },
@@ -35,13 +34,12 @@ export const styles = StyleSheet.create({
   title: {
     color: NEUTRAL_BLACK_900,
     fontSize: 15,
-    fontWeight: 500,
+    fontWeight: '500',
   },
   text: {
     color: NEUTRAL_GRAY_500,
   },
   content: {
-    // padding: 10,
     marginTop: 16,
   },
   grouped: {
