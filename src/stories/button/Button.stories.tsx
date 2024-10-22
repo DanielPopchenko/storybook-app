@@ -32,7 +32,6 @@ const meta: Meta<typeof Button> = {
         'Children is a prop to set a text that you want to see inside the button',
       control: { type: 'text' },
     },
-    // ! Add types and check how they work together
     type: {
       description: 'Choose a type of a button to see different styling',
       options: [
@@ -57,6 +56,9 @@ const meta: Meta<typeof Button> = {
     textColor: {
       description: 'The text color you want to display inside the button.',
     },
+    fontSize: {
+      description: 'The font size property you want to change inside the button.',
+    },
     isDisabled: {
       description: 'Boolean property to set disabled property on a button',
       type: 'boolean',
@@ -69,6 +71,14 @@ const meta: Meta<typeof Button> = {
 };
 
 export default meta;
+
+export const Default: StoryObj<typeof Button> = {
+  args: {
+    type: 'default',
+    children: 'Default Button',
+  },
+  render: (args) => <Button {...args}>{args.children}</Button>,
+};
 
 export const Outline: StoryObj<typeof Button> = {
   args: {
@@ -207,15 +217,6 @@ export const SecondaryDisabledIconOnly: StoryObj<typeof Button> = {
         style={styles.icon}
       />
     ),
-  },
-  render: (args) => <Button {...args}>{args.children}</Button>,
-};
-
-export const MainDisabled: StoryObj<typeof Button> = {
-  args: {
-    textColor: NEUTRAL_WHITE_150,
-    type: 'disabled',
-    isDisabled: true,
   },
   render: (args) => <Button {...args}>{args.children}</Button>,
 };

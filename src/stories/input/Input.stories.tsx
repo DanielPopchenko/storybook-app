@@ -46,17 +46,12 @@ const meta: Meta<typeof Input> = {
     onFocus: {
       control: 'object',
       description:
-        'This is an optional property to add a function that will be triggered on onFocus event.',
+        'This is an optional property to add a function that will be triggered on onFocus event. For example to set isFocused to true and change border styles while focused',
     },
     onBlur: {
       control: 'object',
       description:
-        'This is an optional property to add a function that will be triggered on onBlur event.',
-    },
-    showHelp: {
-      control: 'boolean',
-      description:
-        'This is an optional boolean property to choose wheather you want to add a help icon to your input.',
+        'This is an optional property to add a function that will be triggered on onBlur event. For example to set isFocused to false and change border styles while not in focus',
     },
     helpIcon: {
       control: 'object',
@@ -103,7 +98,7 @@ const meta: Meta<typeof Input> = {
     isFocused: {
       control: 'boolean',
       description:
-        'This is an optional boolean property to change input styles depending on isFocused propery set to true or false.',
+        'This is an optional boolean property to change input border styles depending on isFocused propery set to true or false.',
     },
     isValid: {
       control: 'boolean',
@@ -120,7 +115,6 @@ const meta: Meta<typeof Input> = {
 
 export default meta;
 
-// ! Review if onChange is working properly
 export const Default: StoryObj<typeof Input> = {
   args: {
     type: 'default',
@@ -167,7 +161,6 @@ export const DefaultLabeledHelp: StoryObj<typeof Input> = {
       />
     ),
     label: 'Name',
-    showHelp: true,
     helpIcon: (
       <Image resizeMode="contain" style={styles.icon} source={{ uri: HELP_ICON }} />
     ),

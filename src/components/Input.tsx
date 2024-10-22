@@ -1,4 +1,5 @@
 import {
+  Platform,
   Text,
   TextInput,
   TextStyle,
@@ -27,7 +28,6 @@ export const Input = ({
   onFocus,
   onBlur,
   isFocused,
-  showHelp,
   handleHelp,
   isValid,
   isEmptyOnSubmit,
@@ -43,7 +43,7 @@ export const Input = ({
       {label ? (
         <View style={styles.labelContainer}>
           <Text style={[styles.labelText]}>{label}</Text>
-          {showHelp ? (
+          {helpIcon ? (
             <TouchableOpacity onPress={handleHelp} style={styles.helpIconContainer}>
               {helpIcon}
             </TouchableOpacity>
@@ -71,6 +71,7 @@ export const Input = ({
             styles.textInput,
             styles.text,
             type === 'large' ? styles.largeText : null,
+            Platform.OS === 'web' && ({ outlineStyle: 'none' } as any),
           ]}
           placeholder={placeholder ? placeholder : ''}
           placeholderTextColor={NEUTRAL_GRAY_200}

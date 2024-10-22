@@ -42,7 +42,6 @@ const meta: Meta<typeof Accordion> = {
 
 export default meta;
 
-// ! Review if onChange is working properly
 export const Default: StoryObj<typeof Accordion> = {
   args: {
     data: [

@@ -21,12 +21,12 @@ export const Button = ({
   children = 'Button Name',
   textColor = NEUTRAL_WHITE_50,
   onPress,
-  type = 'defaultSecondary',
-  isDisabled,
+  type = 'default',
+  isDisabled = false,
   iconRight,
   iconLeft,
-  isRounded,
-  isIconOnly,
+  isRounded = false,
+  isIconOnly = false,
   fontSize = 15,
   ...props
 }: ButtonProps) => {

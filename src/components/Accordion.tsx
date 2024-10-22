@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { styles } from '../styles/accordion.styles';
 import { AccordionProps, AccordionItemProps } from '../types/accordion.types';
@@ -14,7 +14,6 @@ const AccordionItem = ({
 }: AccordionItemProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  // !!! styles for icons and views
   return (
     <View style={[styles.item, length > 1 ? styles.margin : null]}>
       <TouchableOpacity onPress={() => setIsOpen(!isOpen)} {...props}>

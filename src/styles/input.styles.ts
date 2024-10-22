@@ -90,6 +90,7 @@ export const styles = StyleSheet.create({
   inactive: {
     borderColor: NEUTRAL_WHITE_150,
   },
+
   largeText: {
     fontSize: 15,
     fontWeight: '500',

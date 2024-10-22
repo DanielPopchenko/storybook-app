@@ -29,19 +29,14 @@ const meta: Meta<typeof InputWithSearch> = {
       description:
         'Set a label, that you want to see, default is "Input text goes here".',
     },
-    value: {
+    searchValue: {
       control: 'text',
-      description: 'Set a value for your input component.',
+      description: 'Set a search value for your input component.',
     },
     onChange: {
       control: 'object',
       description:
         'Set an onChange function for your input, that will be triggered when the option is clicked. Pass the string value inside.',
-    },
-    onSearch: {
-      control: 'object',
-      description:
-        'Set an onSearch function for your input, that will be triggered on onChange input event.',
     },
     iconClose: {
       control: 'object',
@@ -60,7 +55,6 @@ const meta: Meta<typeof InputWithSearch> = {
 
 export default meta;
 
-// ! Review if onChange is working properly
 export const Default: StoryObj<typeof InputWithSearch> = {
   args: {
     placeholder: 'Search for care',

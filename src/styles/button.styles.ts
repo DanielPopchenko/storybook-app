@@ -48,7 +48,6 @@ export const styles = StyleSheet.create({
   iconOnly: {
     borderRadius: 50,
     margin: 0,
-    // padding: 16,
     gap: 0,
     display: 'flex',
     justifyContent: 'center',
