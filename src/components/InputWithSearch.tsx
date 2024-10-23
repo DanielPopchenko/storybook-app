@@ -27,6 +27,14 @@ export const InputWithSearch = ({
   const [data, setData] = useState<{ label: string; value: string }[]>([]);
 
   useEffect(() => {
+    if (searchValue !== '') {
+      const formattedQuery = searchValue.toLowerCase();
+      const filteredData = options.filter((option) => {
+        return contains(option, formattedQuery);
+      });
+      setData(filteredData);
+    }
+
     setData(options);
   }, [options]);
 
