@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Platform } from 'react-native';
 import { styles } from '../styles/inputWithSearch.styles';
 import { useState, useEffect } from 'react';
 import { InputWithSearchProps } from '../types/input.types';
@@ -20,6 +20,10 @@ export const InputWithSearch = ({
   iconClose,
   iconOpen,
   label,
+  testId,
+  additionalStyle,
+  maxLength,
+  multiline,
 }: InputWithSearchProps) => {
   const [isShowOptions, setIsShowOptions] = useState<boolean>(true);
   const [isInputShown, setIsInputShown] = useState<boolean>(false);
@@ -27,7 +31,7 @@ export const InputWithSearch = ({
   const [data, setData] = useState<{ label: string; value: string }[]>([]);
 
   useEffect(() => {
-    if (searchValue !== '') {
+    if (searchValue && searchValue !== '') {
       const formattedQuery = searchValue.toLowerCase();
       const filteredData = options.filter((option) => {
         return contains(option, formattedQuery);
@@ -55,7 +59,13 @@ export const InputWithSearch = ({
   };
 
   return (
-    <View style={[styles.container, isInputShown ? styles.containerActive : null]}>
+    <View
+      style={[
+        styles.container,
+        isInputShown ? styles.containerActive : null,
+        additionalStyle,
+      ]}
+    >
       <TouchableOpacity onPress={() => setIsInputShown(!isInputShown)}>
         <View style={styles.labelContainer}>
           <Text style={[styles.labelText]}>{label ? label : 'Input text goes here'}</Text>
@@ -70,9 +80,16 @@ export const InputWithSearch = ({
               value={searchValue}
               onChangeText={(value) => handleOnChange(value)}
               placeholder={placeholder}
-              style={styles.textInput}
+              style={[
+                styles.textInput,
+
+                Platform.OS === 'web' ? ({ outlineStyle: 'none' } as any) : null,
+              ]}
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)}
+              testID={testId}
+              maxLength={maxLength}
+              multiline={multiline}
             />
 
             {iconRight ? iconRight : null}

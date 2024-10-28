@@ -10,24 +10,27 @@ import {
   SECONDARY_GREEN_700,
   SECONDARY_RED_700,
   SECONDARY_YELLOW_700,
+  SECONDARY_RED_800,
   NEUTRAL_BLACK_900,
   PRIMARY_BLUE_50,
 } from '../utils/colors';
 
-import { ButtonProps } from '../types/button.type';
+import { ButtonProps } from '../types/button.types';
 import { styles } from '../styles/button.styles';
 
 export const Button = ({
   children = 'Button Name',
   textColor = NEUTRAL_WHITE_50,
   onPress,
-  type = 'default',
-  isDisabled = false,
+  type = 'defaultSecondary',
+  isDisabled,
   iconRight,
   iconLeft,
-  isRounded = false,
-  isIconOnly = false,
+  isRounded,
+  isIconOnly,
   fontSize = 15,
+  testId,
+  additionalStyle,
   ...props
 }: ButtonProps) => {
   const variantStyles: Record<ButtonProps['type'], ViewStyle | TextStyle> = {
@@ -90,14 +93,15 @@ export const Button = ({
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
+      backgroundColor: SECONDARY_RED_800,
     },
     boxed: {
       borderRadius: 10,
       borderWidth: 1,
-      minHeight: 70,
       borderColor: NEUTRAL_WHITE_150,
       color: NEUTRAL_BLACK_900,
       backgroundColor: NEUTRAL_WHITE_50,
+      minHeight: 70,
     },
     tertiary: {
       backgroundColor: PRIMARY_BLUE_50,
@@ -109,6 +113,7 @@ export const Button = ({
     isRounded || type === 'card' || type === 'boxed' || type === 'tertiary'
       ? styles.buttonTextBold
       : null;
+
   const outlineTextStyle = type === 'outline' ? styles.outlineText : null;
 
   return (
@@ -125,7 +130,9 @@ export const Button = ({
           isIconOnly || type === 'play' ? styles.iconOnly : null,
 
           !iconLeft && !iconRight ? styles.contentCentered : null,
+          additionalStyle,
         ]}
+        testID={testId}
         {...props}
       >
         {type === 'card' ? iconLeft : null}
@@ -144,6 +151,7 @@ export const Button = ({
                 color: textColor,
                 ...outlineTextStyle,
                 ...activeBtnStyles,
+                fontSize: fontSize,
               }}
             >
               {isIconOnly || type === 'play' ? null : children}

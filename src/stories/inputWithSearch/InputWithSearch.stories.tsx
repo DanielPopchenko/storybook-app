@@ -1,8 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { InputWithSearch } from '../../components/InputWithSearch';
 import SEARCH_ICON from '../../assets/search.png';
-import HELP_ICON from '../../assets/help.png';
-import PHONE_ICON from '../../assets/phone.png';
+import ARROW_LEFT from '../../assets/arrow-left.png';
+import ARROW_RIGHT from '../../assets/arrow-right.png';
 import { Image } from 'react-native';
 import { PRIMARY_BLUE_900 } from '../../utils/colors';
 import { styles } from '../../styles/inputWithSearch.styles';
@@ -14,7 +14,8 @@ const meta: Meta<typeof InputWithSearch> = {
   parameters: {
     docs: {
       description: {
-        component: 'A customizable Input with search component for React Native.',
+        component:
+          'A customizable Input with search component for React Native. This is just a visual representation.',
       },
     },
   },
@@ -26,8 +27,11 @@ const meta: Meta<typeof InputWithSearch> = {
     },
     label: {
       control: 'text',
-      description:
-        'Set a label, that you want to see, default is "Input text goes here".',
+      description: 'Set a label, that you want to see above your input.',
+    },
+    placeholder: {
+      control: 'text',
+      description: 'Set a placehoder, that you want to see in your input.',
     },
     searchValue: {
       control: 'text',
@@ -50,6 +54,23 @@ const meta: Meta<typeof InputWithSearch> = {
       control: 'object',
       description: 'Set an icon taht will be inside the input component.',
     },
+    additionalStyle: {
+      control: 'object',
+      description: 'Set an additional style object for input component.',
+    },
+    maxLength: {
+      control: 'number',
+      description:
+        'Set a number that will be responsible for maximum length of input component.',
+    },
+    multiline: {
+      control: 'boolean',
+      description: 'Set a multiline property on input component.',
+    },
+    testId: {
+      control: 'text',
+      description: 'Set a test id property on input component.',
+    },
   },
 };
 
@@ -64,7 +85,7 @@ export const Default: StoryObj<typeof InputWithSearch> = {
         resizeMode="contain"
         tintColor={PRIMARY_BLUE_900}
         style={styles.icon}
-        source={{ uri: HELP_ICON }}
+        source={{ uri: ARROW_LEFT }}
       />
     ),
     iconOpen: (
@@ -72,7 +93,7 @@ export const Default: StoryObj<typeof InputWithSearch> = {
         resizeMode="contain"
         tintColor={PRIMARY_BLUE_900}
         style={styles.icon}
-        source={{ uri: PHONE_ICON }}
+        source={{ uri: ARROW_RIGHT }}
       />
     ),
     iconRight: (
@@ -84,9 +105,19 @@ export const Default: StoryObj<typeof InputWithSearch> = {
       />
     ),
     options: [
-      { label: 'Option 1', value: 'value 1' },
-      { label: 'Option 2', value: 'value 2' },
+      { label: 'Karry', value: 'value 1' },
+      { label: 'Larry', value: 'value 2' },
+      { label: 'Mary', value: 'value 3' },
+      { label: 'Bob', value: 'value 4' },
     ],
+  },
+
+  parameters: {
+    docs: {
+      description: {
+        story: 'Default input with search component',
+      },
+    },
   },
   render: (args) => <InputWithSearch {...args} />,
 };

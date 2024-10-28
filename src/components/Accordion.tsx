@@ -10,13 +10,15 @@ const AccordionItem = ({
   iconOpen,
   iconClose,
   iconLeft,
+  testId,
+  additionalStyle,
   ...props
 }: AccordionItemProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <View style={[styles.item, length > 1 ? styles.margin : null]}>
-      <TouchableOpacity onPress={() => setIsOpen(!isOpen)} {...props}>
+    <View style={[styles.item, length > 1 ? styles.margin : null, additionalStyle]}>
+      <TouchableOpacity onPress={() => setIsOpen(!isOpen)} testID={testId} {...props}>
         <View style={styles.header}>
           <View style={styles.grouped}>
             {iconLeft ? iconLeft : null}
@@ -36,9 +38,17 @@ const AccordionItem = ({
   );
 };
 
-const Accordion = ({ data, iconLeft, iconClose, iconOpen, ...props }: AccordionProps) => {
+const Accordion = ({
+  data,
+  iconLeft,
+  iconClose,
+  iconOpen,
+  testId,
+  additionalStyle,
+  ...props
+}: AccordionProps) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
       {data.map((item) => (
         <AccordionItem
           key={item.title}
@@ -48,6 +58,8 @@ const Accordion = ({ data, iconLeft, iconClose, iconOpen, ...props }: AccordionP
           iconLeft={iconLeft}
           iconClose={iconClose}
           iconOpen={iconOpen}
+          testId={testId}
+          additionalStyle={additionalStyle}
           {...props}
         />
       ))}

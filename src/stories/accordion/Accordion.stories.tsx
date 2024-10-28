@@ -37,6 +37,15 @@ const meta: Meta<typeof Accordion> = {
       discription:
         'Set an open icon that is going to be displayed when Accordion component is closed.',
     },
+    additionalStyle: {
+      control: 'object',
+      description: 'Set this property to add additional styles to your accordion.',
+    },
+
+    testId: {
+      control: 'text',
+      description: 'Set a test id property on accordion component.',
+    },
   },
 };
 
@@ -77,6 +86,13 @@ export const Default: StoryObj<typeof Accordion> = {
         style={styles.icon}
       />
     ),
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Accordion component.',
+      },
+    },
   },
   render: (args) => <Accordion {...args} />,
 };

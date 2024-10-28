@@ -14,7 +14,8 @@ const meta: Meta<typeof Input> = {
   parameters: {
     docs: {
       description: {
-        component: 'A customizable Input component for React Native.',
+        component:
+          'A customizable Input component for React Native. Set a type, value, placeholer and onChangeText and you are good to go. See all other optional properties below.',
       },
     },
   },
@@ -22,69 +23,67 @@ const meta: Meta<typeof Input> = {
     type: {
       control: 'radio',
       options: ['default', 'large'],
-      description: 'Set a type of input you want to use. It equals "default" by default.',
+      description: 'Set a "style" type of input. It is "default" by default.',
     },
     value: {
       control: 'text',
-      description: 'Bind a state value to the input component to make it controllable.',
+      description: 'Set a value to the input component to make it controlled.',
     },
 
     onChangeText: {
       control: 'object',
-      description: 'Add a function that will trigger on OnChangeText event.',
+      description: 'Add a function that will be triggered on onChangeText event.',
     },
 
     placeholder: {
       control: 'text',
       description: 'Set a placeholder property on your input.',
     },
+    label: {
+      control: 'text',
+      description: 'Set a label on your input.',
+    },
     onKeyPress: {
       control: 'object',
-      description:
-        'This is an optional property to add a function that will be triggered on onKeyPress event.',
+      description: 'Add a function that will be triggered on onKeyPress event.',
     },
     onFocus: {
       control: 'object',
       description:
-        'This is an optional property to add a function that will be triggered on onFocus event. For example to set isFocused to true and change border styles while focused',
+        'Add a function that will be triggered on onFocus event. For example to set isFocused to true and change border styles while focused',
     },
     onBlur: {
       control: 'object',
       description:
-        'This is an optional property to add a function that will be triggered on onBlur event. For example to set isFocused to false and change border styles while not in focus',
+        'Add a function that will be triggered on onBlur event. For example to set isFocused to false and change border styles while not in focus',
     },
     helpIcon: {
       control: 'object',
-      description: 'This is an optional property to add a help icon to your input.',
+      description:
+        'Add a help icon to your input. It is going to be in a row with a label',
     },
     handleHelp: {
       control: 'object',
       description:
-        'This is an optional property to add a function that will be triggered on a button (help icon) onClick event, when showHelp is set on true.',
+        'Add a function that will be triggered on a help-icon button onPress event.',
     },
     iconLeft: {
       control: 'object',
-      description: 'This is an optional property to add icon on a left of your input.',
+      description: 'Add an icon on a left of your input.',
     },
     iconRight: {
       control: 'object',
-      description: 'This is an optional property to add icon on a right of your input.',
+      description: 'Add an icon on a right of your input.',
     },
     autoCapitalize: {
       control: 'radio',
       options: ['none', 'sentences', 'words', 'characters', undefined],
-      description:
-        'This is an optional property to control autoCapitalize property of your input.',
+      description: 'Control auto-capitalize property of your input.',
     },
     keyboardType: {
       control: 'radio',
       options: ['default', 'email-address', 'numeric', 'phone-pad'],
-      description:
-        'This is an optional property to control keyboardType property of your input.',
-    },
-    label: {
-      control: 'text',
-      description: 'This is an optional property to add a label on your input.',
+      description: 'Control keyboard-type property of your input.',
     },
     warningText: {
       control: 'text',
@@ -98,17 +97,35 @@ const meta: Meta<typeof Input> = {
     isFocused: {
       control: 'boolean',
       description:
-        'This is an optional boolean property to change input border styles depending on isFocused propery set to true or false.',
+        'Change input border styles depending on isFocused propery set to true or false, with help of onFocus and onBlur.',
     },
     isValid: {
       control: 'boolean',
       description:
-        'This is an optional boolean property to change input styles depending on isValid propery set to true or false, for example when an error occured.',
+        'Change input styles depending on isValid propery set to true or false, for example when an error occured.',
     },
     isEmptyOnSubmit: {
       control: 'boolean',
       description:
-        'This is an optional boolean property to change input styles depending on isEmptyOnSubmit propery set to true or false, for example when a value of input is empty while submitting a form.',
+        'Change input styles depending on isEmptyOnSubmit propery set to true or false, for example when a value of input is empty while submitting a form.',
+    },
+    additionalStyle: {
+      control: 'object',
+      description: 'Set an additional style object for input component.',
+    },
+    maxLength: {
+      control: 'number',
+      description:
+        'Set a number that will be responsible for maximum length of input component.',
+    },
+    multiline: {
+      control: 'boolean',
+      description: 'Set a multiline property on input component.',
+    },
+
+    testId: {
+      control: 'text',
+      description: 'Set a test id property on input component.',
     },
   },
 };
@@ -128,6 +145,60 @@ export const Default: StoryObj<typeof Input> = {
       />
     ),
   },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Default input component',
+      },
+    },
+  },
+  render: (args) => <Input {...args} />,
+};
+
+export const Large: StoryObj<typeof Input> = {
+  args: {
+    type: 'large',
+    placeholder: 'Search for care',
+    iconLeft: (
+      <Image
+        resizeMode="contain"
+        tintColor={PRIMARY_BLUE_900}
+        style={styles.icon}
+        source={{ uri: SEARCH_ICON }}
+      />
+    ),
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Large input component',
+      },
+    },
+  },
+  render: (args) => <Input {...args} />,
+};
+
+export const DefaultFocused: StoryObj<typeof Input> = {
+  args: {
+    type: 'default',
+    placeholder: 'Search for care',
+    isFocused: true,
+    iconLeft: (
+      <Image
+        resizeMode="contain"
+        tintColor={PRIMARY_BLUE_900}
+        style={styles.icon}
+        source={{ uri: SEARCH_ICON }}
+      />
+    ),
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Default input component when focused',
+      },
+    },
+  },
   render: (args) => <Input {...args} />,
 };
 
@@ -144,6 +215,13 @@ export const DefaultLabeled: StoryObj<typeof Input> = {
       />
     ),
     label: 'Name',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Default input component with label',
+      },
+    },
   },
   render: (args) => <Input {...args} />,
 };
@@ -165,23 +243,13 @@ export const DefaultLabeledHelp: StoryObj<typeof Input> = {
       <Image resizeMode="contain" style={styles.icon} source={{ uri: HELP_ICON }} />
     ),
   },
-  render: (args) => <Input {...args} />,
-};
-
-export const DefaultIconRight: StoryObj<typeof Input> = {
-  args: {
-    type: 'default',
-    placeholder: 'Default placeholder',
-    iconRight: (
-      <Image
-        source={{ uri: SEARCH_ICON }}
-        resizeMode="contain"
-        tintColor={PRIMARY_BLUE_900}
-        style={styles.icon}
-      />
-    ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Default input component with label, help icon and left icon inside it',
+      },
+    },
   },
-
   render: (args) => <Input {...args} />,
 };
 
@@ -207,6 +275,13 @@ export const TwoIcons: StoryObj<typeof Input> = {
       />
     ),
   },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Default input component with right and left icons inside it',
+      },
+    },
+  },
 
   render: (args) => <Input {...args} />,
 };
@@ -216,6 +291,14 @@ export const Error: StoryObj<typeof Input> = {
     type: 'default',
     placeholder: 'Default placeholder',
     isValid: false,
+  },
+
+  parameters: {
+    docs: {
+      description: {
+        story: 'Default input component with error state set to true',
+      },
+    },
   },
 
   render: (args) => <Input {...args} />,

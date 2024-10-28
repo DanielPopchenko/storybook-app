@@ -31,6 +31,10 @@ export const Input = ({
   handleHelp,
   isValid,
   isEmptyOnSubmit,
+  testId,
+  additionalStyle,
+  maxLength,
+  multiline,
   ...props
 }: InputProps) => {
   const variantStyles: Record<InputProps['type'], ViewStyle | TextStyle> = {
@@ -62,6 +66,7 @@ export const Input = ({
             : styles.inactive,
 
           iconLeft || iconRight ? styles.defaultGap : null,
+          additionalStyle,
         ]}
       >
         {iconLeft ? iconLeft : null}
@@ -71,7 +76,7 @@ export const Input = ({
             styles.textInput,
             styles.text,
             type === 'large' ? styles.largeText : null,
-            Platform.OS === 'web' && ({ outlineStyle: 'none' } as any),
+            Platform.OS === 'web' ? ({ outlineStyle: 'none' } as any) : null,
           ]}
           placeholder={placeholder ? placeholder : ''}
           placeholderTextColor={NEUTRAL_GRAY_200}
@@ -85,6 +90,9 @@ export const Input = ({
           autoCapitalize={autoCapitalize}
           autoCorrect={false}
           keyboardType={keyboardType}
+          testID={testId}
+          maxLength={maxLength}
+          multiline={multiline}
           {...props}
         />
         {iconRight ? iconRight : null}

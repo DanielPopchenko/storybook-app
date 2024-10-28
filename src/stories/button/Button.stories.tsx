@@ -1,9 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Image, View } from 'react-native';
 import {
-  NEUTRAL_GRAY_200,
   PRIMARY_BLUE_900,
-  NEUTRAL_WHITE_150,
   NEUTRAL_BLACK_900,
   NEUTRAL_WHITE_50,
 } from '../../utils/colors';
@@ -13,7 +11,6 @@ import { styles } from '../../styles/button.styles';
 import PHARMACY_ICON from '../../assets/pharmacy.png';
 import PHONE_ICON from '../../assets/phone.png';
 import ARROW_RIGHT_ICON from '../../assets/arrow-right.png';
-import PLAY_ICON from '../../assets/play.png';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
@@ -22,18 +19,18 @@ const meta: Meta<typeof Button> = {
   parameters: {
     docs: {
       description: {
-        component: 'A customizable Button component for React Native.',
+        component:
+          'A customizable Button component for React Native. Set a type and children, and you are good to go! See all other optional properties below.',
       },
     },
   },
   argTypes: {
     children: {
-      description:
-        'Children is a prop to set a text that you want to see inside the button',
+      description: 'Children prop sets text inside the button.',
       control: { type: 'text' },
     },
     type: {
-      description: 'Choose a type of a button to see different styling',
+      description: 'Choose a type of a button to set different styling variant.',
       options: [
         'defaultSecondary',
         'default',
@@ -54,18 +51,46 @@ const meta: Meta<typeof Button> = {
       },
     },
     textColor: {
-      description: 'The text color you want to display inside the button.',
+      description: 'Set a text color you want to see inside the button.',
     },
     fontSize: {
-      description: 'The font size property you want to change inside the button.',
+      description: 'Set a font size property, if you want to change it in button.',
     },
     isDisabled: {
-      description: 'Boolean property to set disabled property on a button',
+      description: 'Set this boolean prop to configure disabled property on a button',
+      type: 'boolean',
+    },
+    isRounded: {
+      description:
+        'Set this boolean property to conrtol if you want your button to be rounded or default style',
+      type: 'boolean',
+    },
+    isIconOnly: {
+      description:
+        'Set this boolean property to conrtol if you want your button to be just a circle with icon inside.',
       type: 'boolean',
     },
     onPress: {
-      description: 'Function to call when the button is pressed.',
+      description:
+        'Set an onPress function that will be called when the button is pressed.',
       action: 'clicked',
+    },
+    iconLeft: {
+      control: 'object',
+      description: 'Set this property to add icon on a left of your button.',
+    },
+    iconRight: {
+      control: 'object',
+      description: 'Set this property to add icon on a right of your button.',
+    },
+    additionalStyle: {
+      control: 'object',
+      description: 'Set this property to add additional styles to your button.',
+    },
+
+    testId: {
+      control: 'text',
+      description: 'Set a test id property on button component.',
     },
   },
 };
@@ -77,6 +102,14 @@ export const Default: StoryObj<typeof Button> = {
     type: 'default',
     children: 'Default Button',
   },
+  parameters: {
+    docs: {
+      description: {
+        story: 'The most used button, so the type is called default',
+      },
+    },
+  },
+
   render: (args) => <Button {...args}>{args.children}</Button>,
 };
 
@@ -84,6 +117,13 @@ export const Outline: StoryObj<typeof Button> = {
   args: {
     type: 'outline',
     children: 'Active Button',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'That is outline button',
+      },
+    },
   },
   render: (args) => <Button {...args}>{args.children}</Button>,
 };
@@ -110,39 +150,59 @@ export const activeOutline: StoryObj<typeof Button> = {
       />
     ),
   },
-  render: (args) => <Button {...args}>{args.children}</Button>,
-};
-
-export const MainWarning: StoryObj<typeof Button> = {
-  args: {
-    type: 'danger',
-    isRounded: true,
-    textColor: NEUTRAL_WHITE_150,
-    iconRight: (
-      <Image
-        source={{ uri: ARROW_RIGHT_ICON }}
-        resizeMode="contain"
-        tintColor={NEUTRAL_WHITE_150}
-        style={styles.icon}
-      />
-    ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'That is active-outline button, with icons for example.',
+      },
+    },
   },
   render: (args) => <Button {...args}>{args.children}</Button>,
 };
 
-export const MainWarningWrapped: StoryObj<typeof Button> = {
+export const Warning: StoryObj<typeof Button> = {
   args: {
-    type: 'danger',
+    type: 'warning',
     isRounded: true,
-    textColor: NEUTRAL_WHITE_150,
     iconRight: (
       <Image
         source={{ uri: ARROW_RIGHT_ICON }}
         resizeMode="contain"
-        tintColor={NEUTRAL_WHITE_150}
+        style={styles.icon}
+        tintColor={NEUTRAL_WHITE_50}
+      />
+    ),
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'That is a warning button, with an icon for example.',
+      },
+    },
+  },
+  render: (args) => <Button {...args}>{args.children}</Button>,
+};
+
+export const DangerWrapped: StoryObj<typeof Button> = {
+  args: {
+    type: 'danger',
+    isRounded: true,
+    iconRight: (
+      <Image
+        source={{ uri: ARROW_RIGHT_ICON }}
+        resizeMode="contain"
+        tintColor={NEUTRAL_WHITE_50}
         style={styles.icon}
       />
     ),
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'That is a danger button, with an icon for example and wrapped with view, to show that width is dynamic.',
+      },
+    },
   },
   render: (args) => (
     <View style={{ width: 250, height: 'auto' }}>
@@ -172,6 +232,13 @@ export const Tertiary: StoryObj<typeof Button> = {
       />
     ),
   },
+  parameters: {
+    docs: {
+      description: {
+        story: 'That is a tetriary button, with icons for example.',
+      },
+    },
+  },
   render: (args) => <Button {...args}>{args.children}</Button>,
 };
 
@@ -183,40 +250,13 @@ export const Card: StoryObj<typeof Button> = {
       <Image source={{ uri: PHARMACY_ICON }} resizeMode="contain" style={styles.icon} />
     ),
   },
-  render: (args) => <Button {...args}>{args.children}</Button>,
-};
-
-export const CardDisabled: StoryObj<typeof Button> = {
-  args: {
-    isDisabled: true,
-    type: 'card',
-    textColor: NEUTRAL_GRAY_200,
-    iconLeft: (
-      <Image
-        source={{ uri: PHARMACY_ICON }}
-        tintColor={NEUTRAL_GRAY_200}
-        resizeMode="contain"
-        style={styles.icon}
-      />
-    ),
-  },
-  render: (args) => <Button {...args}>{args.children}</Button>,
-};
-
-export const SecondaryDisabledIconOnly: StoryObj<typeof Button> = {
-  args: {
-    type: 'disabled',
-    isRounded: true,
-    isDisabled: true,
-    isIconOnly: true,
-    iconRight: (
-      <Image
-        source={{ uri: PHONE_ICON }}
-        resizeMode="contain"
-        tintColor={NEUTRAL_WHITE_50}
-        style={styles.icon}
-      />
-    ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'That is a card button. It should have left icon set, to behave and look like it is supposed to!',
+      },
+    },
   },
   render: (args) => <Button {...args}>{args.children}</Button>,
 };
@@ -242,33 +282,40 @@ export const Boxed: StoryObj<typeof Button> = {
       />
     ),
   },
-  render: (args) => <Button {...args}>{args.children}</Button>,
-};
-
-export const Play: StoryObj<typeof Button> = {
-  args: {
-    type: 'play',
-    iconRight: (
-      <Image source={{ uri: PLAY_ICON }} resizeMode="contain" style={styles.playIcon} />
-    ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'That is a boxed button, with icons for example',
+      },
+    },
   },
   render: (args) => <Button {...args}>{args.children}</Button>,
 };
 
-export const PlayBlack: StoryObj<typeof Button> = {
-  args: {
-    type: 'play',
-    iconRight: (
-      <Image
-        source={{ uri: PLAY_ICON }}
-        resizeMode="contain"
-        style={styles.playIcon}
-        tintColor={NEUTRAL_BLACK_900}
-      />
-    ),
-  },
-  render: (args) => <Button {...args}>{args.children}</Button>,
-};
+// export const Play: StoryObj<typeof Button> = {
+//   args: {
+//     type: 'play',
+//     iconRight: (
+//       <Image source={{ uri: PLAY_ICON }} resizeMode="contain" style={styles.playIcon} />
+//     ),
+//   },
+//   render: (args) => <Button {...args}>{args.children}</Button>,
+// };
+
+// export const PlayBlack: StoryObj<typeof Button> = {
+//   args: {
+//     type: 'play',
+//     iconRight: (
+//       <Image
+//         source={{ uri: PLAY_ICON }}
+//         resizeMode="contain"
+//         style={styles.playIcon}
+//         tintColor={NEUTRAL_BLACK_900}
+//       />
+//     ),
+//   },
+//   render: (args) => <Button {...args}>{args.children}</Button>,
+// };
 
 export const IconOnlyDefault: StoryObj<typeof Button> = {
   args: {
@@ -281,7 +328,16 @@ export const IconOnlyDefault: StoryObj<typeof Button> = {
         tintColor={NEUTRAL_WHITE_50}
       />
     ),
+
     isIconOnly: true,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'That is an icon-only button, in default button style. It should have right! icon set, to behave and look like it is supposed to!',
+      },
+    },
   },
   render: (args) => <Button {...args}>{args.children}</Button>,
 };
@@ -291,13 +347,21 @@ export const IconOnlyOutline: StoryObj<typeof Button> = {
     type: 'outline',
     iconRight: (
       <Image
-        source={{ uri: PHARMACY_ICON }}
+        source={{ uri: PHONE_ICON }}
         resizeMode="contain"
         style={styles.icon}
         tintColor={NEUTRAL_BLACK_900}
       />
     ),
     isIconOnly: true,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'That is an icon-only button, in outline button style. It should have right! icon set, to behave and look like it is supposed to!',
+      },
+    },
   },
   render: (args) => <Button {...args}>{args.children}</Button>,
 };

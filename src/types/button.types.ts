@@ -1,4 +1,5 @@
 import React from 'react';
+import { ViewStyle } from 'react-native';
 
 export type ButtonProps = {
   children?: string;
@@ -24,4 +25,6 @@ export type ButtonProps = {
   isRounded?: boolean;
   isIconOnly?: boolean;
   fontSize?: number;
+  testId?: string;
+  additionalStyle?: ViewStyle;
 };

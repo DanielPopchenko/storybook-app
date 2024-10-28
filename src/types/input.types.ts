@@ -1,5 +1,5 @@
 import React from 'react';
-import { NativeSyntheticEvent, TextInputFocusEventData } from 'react-native';
+import { NativeSyntheticEvent, TextInputFocusEventData, ViewStyle } from 'react-native';
 
 export type InputProps = {
   type: 'default' | 'large';
@@ -13,15 +13,18 @@ export type InputProps = {
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
   helpIcon?: React.ReactNode;
-  autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters' | undefined;
+  autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
   keyboardType?: 'default' | 'email-address' | 'numeric' | 'phone-pad';
   label?: string;
   warningText?: string;
   isSecureTextEntry?: boolean;
   isFocused?: boolean;
-
   isValid?: boolean;
   isEmptyOnSubmit?: boolean;
+  testId?: string;
+  additionalStyle?: ViewStyle;
+  maxLength?: number;
+  multiline?: boolean;
 };
 
 export type InputWithSearchProps = {
@@ -33,4 +36,8 @@ export type InputWithSearchProps = {
   iconOpen?: React.ReactNode;
   iconClose?: React.ReactNode;
   label: string;
+  testId?: string;
+  additionalStyle?: ViewStyle;
+  maxLength?: number;
+  multiline?: boolean;
 };

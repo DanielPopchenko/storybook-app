@@ -13,8 +13,8 @@ export const styles = StyleSheet.create({
     width: 18,
   },
   container: {
-    backgroundColor: NEUTRAL_WHITE_100,
-    borderRadius: 10,
+    width: '100%',
+    height: '100%',
   },
   item: {
     display: 'flex',
