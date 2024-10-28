@@ -37,14 +37,9 @@ const meta: Meta<typeof Accordion> = {
       discription:
         'Set an open icon that is going to be displayed when Accordion component is closed.',
     },
-    additionalStyle: {
+    style: {
       control: 'object',
       description: 'Set this property to add additional styles to your accordion.',
-    },
-
-    testId: {
-      control: 'text',
-      description: 'Set a test id property on accordion component.',
     },
   },
 };

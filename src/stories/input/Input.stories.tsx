@@ -109,7 +109,7 @@ const meta: Meta<typeof Input> = {
       description:
         'Change input styles depending on isEmptyOnSubmit propery set to true or false, for example when a value of input is empty while submitting a form.',
     },
-    additionalStyle: {
+    style: {
       control: 'object',
       description: 'Set an additional style object for input component.',
     },
@@ -121,11 +121,6 @@ const meta: Meta<typeof Input> = {
     multiline: {
       control: 'boolean',
       description: 'Set a multiline property on input component.',
-    },
-
-    testId: {
-      control: 'text',
-      description: 'Set a test id property on input component.',
     },
   },
 };

@@ -31,8 +31,7 @@ export const Input = ({
   handleHelp,
   isValid,
   isEmptyOnSubmit,
-  testId,
-  additionalStyle,
+  style,
   maxLength,
   multiline,
   ...props
@@ -66,7 +65,7 @@ export const Input = ({
             : styles.inactive,
 
           iconLeft || iconRight ? styles.defaultGap : null,
-          additionalStyle,
+          style,
         ]}
       >
         {iconLeft ? iconLeft : null}
@@ -90,7 +89,6 @@ export const Input = ({
           autoCapitalize={autoCapitalize}
           autoCorrect={false}
           keyboardType={keyboardType}
-          testID={testId}
           maxLength={maxLength}
           multiline={multiline}
           {...props}

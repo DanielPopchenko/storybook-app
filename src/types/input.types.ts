@@ -21,8 +21,7 @@ export type InputProps = {
   isFocused?: boolean;
   isValid?: boolean;
   isEmptyOnSubmit?: boolean;
-  testId?: string;
-  additionalStyle?: ViewStyle;
+  style?: ViewStyle;
   maxLength?: number;
   multiline?: boolean;
 };
@@ -36,8 +35,7 @@ export type InputWithSearchProps = {
   iconOpen?: React.ReactNode;
   iconClose?: React.ReactNode;
   label: string;
-  testId?: string;
-  additionalStyle?: ViewStyle;
+  style?: ViewStyle;
   maxLength?: number;
   multiline?: boolean;
 };

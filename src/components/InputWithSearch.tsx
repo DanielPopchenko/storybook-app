@@ -20,10 +20,10 @@ export const InputWithSearch = ({
   iconClose,
   iconOpen,
   label,
-  testId,
-  additionalStyle,
+  style,
   maxLength,
   multiline,
+  ...props
 }: InputWithSearchProps) => {
   const [isShowOptions, setIsShowOptions] = useState<boolean>(true);
   const [isInputShown, setIsInputShown] = useState<boolean>(false);
@@ -59,13 +59,7 @@ export const InputWithSearch = ({
   };
 
   return (
-    <View
-      style={[
-        styles.container,
-        isInputShown ? styles.containerActive : null,
-        additionalStyle,
-      ]}
-    >
+    <View style={[styles.container, isInputShown ? styles.containerActive : null, style]}>
       <TouchableOpacity onPress={() => setIsInputShown(!isInputShown)}>
         <View style={styles.labelContainer}>
           <Text style={[styles.labelText]}>{label ? label : 'Input text goes here'}</Text>
@@ -87,9 +81,9 @@ export const InputWithSearch = ({
               ]}
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)}
-              testID={testId}
               maxLength={maxLength}
               multiline={multiline}
+              {...props}
             />
 
             {iconRight ? iconRight : null}

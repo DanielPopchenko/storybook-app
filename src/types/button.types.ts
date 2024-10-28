@@ -25,6 +25,5 @@ export type ButtonProps = {
   isRounded?: boolean;
   isIconOnly?: boolean;
   fontSize?: number;
-  testId?: string;
-  additionalStyle?: ViewStyle;
+  style?: ViewStyle;
 };

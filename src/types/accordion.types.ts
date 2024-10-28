@@ -7,8 +7,7 @@ export type AccordionItemProps = {
   iconLeft: React.ReactNode;
   iconOpen: React.ReactNode;
   iconClose: React.ReactNode;
-  testId?: string;
-  additionalStyle?: ViewStyle;
+  style?: ViewStyle;
 };
 
 export interface IData {
@@ -21,6 +20,5 @@ export type AccordionProps = {
   iconLeft?: React.ReactNode;
   iconOpen?: React.ReactNode;
   iconClose?: React.ReactNode;
-  testId?: string;
-  additionalStyle?: ViewStyle;
+  style?: ViewStyle;
 };

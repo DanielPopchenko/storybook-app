@@ -29,8 +29,7 @@ export const Button = ({
   isRounded,
   isIconOnly,
   fontSize = 15,
-  testId,
-  additionalStyle,
+  style,
   ...props
 }: ButtonProps) => {
   const variantStyles: Record<ButtonProps['type'], ViewStyle | TextStyle> = {
@@ -128,11 +127,9 @@ export const Button = ({
           variantStyles[type],
           iconLeft || iconRight ? styles.gap : null,
           isIconOnly || type === 'play' ? styles.iconOnly : null,
-
           !iconLeft && !iconRight ? styles.contentCentered : null,
-          additionalStyle,
+          style,
         ]}
-        testID={testId}
         {...props}
       >
         {type === 'card' ? iconLeft : null}

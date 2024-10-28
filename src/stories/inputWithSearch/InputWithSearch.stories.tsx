@@ -54,7 +54,7 @@ const meta: Meta<typeof InputWithSearch> = {
       control: 'object',
       description: 'Set an icon taht will be inside the input component.',
     },
-    additionalStyle: {
+    style: {
       control: 'object',
       description: 'Set an additional style object for input component.',
     },
@@ -66,10 +66,6 @@ const meta: Meta<typeof InputWithSearch> = {
     multiline: {
       control: 'boolean',
       description: 'Set a multiline property on input component.',
-    },
-    testId: {
-      control: 'text',
-      description: 'Set a test id property on input component.',
     },
   },
 };

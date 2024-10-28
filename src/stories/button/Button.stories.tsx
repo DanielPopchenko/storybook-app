@@ -83,14 +83,9 @@ const meta: Meta<typeof Button> = {
       control: 'object',
       description: 'Set this property to add icon on a right of your button.',
     },
-    additionalStyle: {
+    style: {
       control: 'object',
       description: 'Set this property to add additional styles to your button.',
-    },
-
-    testId: {
-      control: 'text',
-      description: 'Set a test id property on button component.',
     },
   },
 };
