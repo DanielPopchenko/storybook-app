@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from '@storybook/react';
-import HELP_ICON from '../../assets/help.png';
 import PHONE_ICON from '../../assets/phone.png';
 import ARROW_RIGHT from '../../assets/arrow-right.png';
 import ARROW_LEFT from '../../assets/arrow-left.png';

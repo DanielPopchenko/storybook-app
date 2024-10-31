@@ -1,10 +1,5 @@
 import { StyleSheet } from 'react-native';
-import {
-  NEUTRAL_BLACK_900,
-  NEUTRAL_GRAY_500,
-  NEUTRAL_WHITE_100,
-  NEUTRAL_WHITE_50,
-} from '../utils/colors';
+import { NEUTRAL_BLACK_900, NEUTRAL_GRAY_500, NEUTRAL_WHITE_50 } from '../utils/colors';
 
 export const styles = StyleSheet.create({
   icon: {
