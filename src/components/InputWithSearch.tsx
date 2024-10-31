@@ -74,9 +74,9 @@ export const InputWithSearch = ({
               value={searchValue}
               onChangeText={(value) => handleOnChange(value)}
               placeholder={placeholder}
+              autoComplete="off"
               style={[
                 styles.textInput,
-
                 Platform.OS === 'web' ? ({ outlineStyle: 'none' } as any) : null,
               ]}
               onFocus={() => setIsFocused(true)}

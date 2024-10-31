@@ -17,8 +17,7 @@ export type ButtonProps = {
     | 'activeOutline'
     | 'card'
     | 'boxed'
-    | 'tertiary'
-    | 'play';
+    | 'tertiary';
   isDisabled?: boolean;
   iconRight?: React.ReactNode;
   iconLeft?: React.ReactNode;

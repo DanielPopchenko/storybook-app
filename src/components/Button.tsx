@@ -83,17 +83,6 @@ export const Button = ({
       borderRadius: 5,
       flex: 1,
     },
-    play: {
-      borderRadius: 50,
-      margin: 0,
-      width: 'auto',
-      height: 'auto',
-      gap: 0,
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: SECONDARY_RED_800,
-    },
     boxed: {
       borderRadius: 10,
       borderWidth: 1,
@@ -126,7 +115,7 @@ export const Button = ({
           isRounded ? styles.rounded : null,
           variantStyles[type],
           iconLeft || iconRight ? styles.gap : null,
-          isIconOnly || type === 'play' ? styles.iconOnly : null,
+          isIconOnly ? styles.iconOnly : null,
           !iconLeft && !iconRight ? styles.contentCentered : null,
           style,
         ]}
@@ -151,7 +140,7 @@ export const Button = ({
                 fontSize: fontSize,
               }}
             >
-              {isIconOnly || type === 'play' ? null : children}
+              {isIconOnly ? null : children}
             </Text>
           )}
         </View>
@@ -166,7 +155,7 @@ export const Button = ({
               fontSize: fontSize,
             }}
           >
-            {isIconOnly || type === 'play' ? null : children}
+            {isIconOnly ? null : children}
           </Text>
         ) : null}
 

@@ -287,31 +287,6 @@ export const Boxed: StoryObj<typeof Button> = {
   render: (args) => <Button {...args}>{args.children}</Button>,
 };
 
-// export const Play: StoryObj<typeof Button> = {
-//   args: {
-//     type: 'play',
-//     iconRight: (
-//       <Image source={{ uri: PLAY_ICON }} resizeMode="contain" style={styles.playIcon} />
-//     ),
-//   },
-//   render: (args) => <Button {...args}>{args.children}</Button>,
-// };
-
-// export const PlayBlack: StoryObj<typeof Button> = {
-//   args: {
-//     type: 'play',
-//     iconRight: (
-//       <Image
-//         source={{ uri: PLAY_ICON }}
-//         resizeMode="contain"
-//         style={styles.playIcon}
-//         tintColor={NEUTRAL_BLACK_900}
-//       />
-//     ),
-//   },
-//   render: (args) => <Button {...args}>{args.children}</Button>,
-// };
-
 export const IconOnlyDefault: StoryObj<typeof Button> = {
   args: {
     type: 'default',
@@ -330,7 +305,7 @@ export const IconOnlyDefault: StoryObj<typeof Button> = {
     docs: {
       description: {
         story:
-          'That is an icon-only button, in default button style. It should have right! icon set, to behave and look like it is supposed to!',
+          'That is an icon-only button, in default button style. It should have right! icon set, to behave and look like it is supposed to.',
       },
     },
   },
@@ -354,7 +329,7 @@ export const IconOnlyOutline: StoryObj<typeof Button> = {
     docs: {
       description: {
         story:
-          'That is an icon-only button, in outline button style. It should have right! icon set, to behave and look like it is supposed to!',
+          'That is an icon-only button, in outline button style. It should have right! icon set, to behave and look like it is supposed to.',
       },
     },
   },

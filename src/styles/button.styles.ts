@@ -71,10 +71,6 @@ export const styles = StyleSheet.create({
     width: 25,
     height: 25,
   },
-  playIcon: {
-    width: 115,
-    height: 115,
-  },
   fullWidth: {
     width: '100%',
     textAlign: 'center',

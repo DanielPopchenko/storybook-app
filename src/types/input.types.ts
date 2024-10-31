@@ -5,7 +5,7 @@ export type InputProps = {
   type: 'default' | 'large';
   value: string;
   placeholder: string;
-  onChangeText: React.Dispatch<React.SetStateAction<string>>;
+  onChangeText: (param?: any) => void;
   onKeyPress?: () => void;
   onFocus?: ((e: NativeSyntheticEvent<TextInputFocusEventData>) => void) | undefined;
   onBlur?: ((e: NativeSyntheticEvent<TextInputFocusEventData>) => void) | undefined;
@@ -29,7 +29,7 @@ export type InputProps = {
 export type InputWithSearchProps = {
   placeholder: string;
   searchValue: string;
-  onChange: React.Dispatch<React.SetStateAction<string>>;
+  onChange: (param?: any) => void;
   options: { label: string; value: string }[];
   iconRight?: React.ReactNode;
   iconOpen?: React.ReactNode;

@@ -1,6 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react';
 import HELP_ICON from '../../assets/help.png';
 import PHONE_ICON from '../../assets/phone.png';
+import ARROW_RIGHT from '../../assets/arrow-right.png';
+import ARROW_LEFT from '../../assets/arrow-left.png';
 import { Image } from 'react-native';
 import { PRIMARY_BLUE_900 } from '../../utils/colors';
 import { styles } from '../../styles/input.styles';
@@ -67,7 +69,7 @@ export const Default: StoryObj<typeof Accordion> = {
     ),
     iconClose: (
       <Image
-        source={{ uri: PHONE_ICON }}
+        source={{ uri: ARROW_LEFT }}
         resizeMode="contain"
         tintColor={PRIMARY_BLUE_900}
         style={styles.icon}
@@ -75,7 +77,7 @@ export const Default: StoryObj<typeof Accordion> = {
     ),
     iconOpen: (
       <Image
-        source={{ uri: HELP_ICON }}
+        source={{ uri: ARROW_RIGHT }}
         resizeMode="contain"
         tintColor={PRIMARY_BLUE_900}
         style={styles.icon}
