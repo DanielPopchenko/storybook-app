@@ -1,15 +1,19 @@
 _- TODO -_
 
-- TODO: ! Write documentation of button properties
-- TODO: Should I have hardcoded width on a Button component ????
-- TODO: should I make an "Accordion" styled input, and how it is going to look ?
-- TODO: ! Somehow check how the icons resolution behaves on IOS and Android
-- TODO: What is TAG in Accordion ?
-- TODO: How is Header, StatusBar supposed to be implemented Headers, Misc ????
-- TODO: Is StatusBar supposed to be implemented using 'expo-status-bar'
+PRIORITY -> TODO: Look at iconOnly property, fix the styles -> added dynamic fz
 
-_- DONE -_
+- !! fw as string
+- TODO: make an outline in input search - DONE
+- TODO: default button -> more dynamic properties
+- TODO: Play button -> icon separate, different backgrounds
 
+  _- DONE -_
+
+- ANDROID Problem with -> Error while updating property 'fontWeight' in shadow node of type: Android TextInput. java.lang.Double cannot be cast to java.lang.String -> Fixed (just removed this property from there)
+- Different story inputWithSearch (see screenshot)
+- No width in button -> make it stretch to the width of block -> DONE
+- What is TAG in Accordion ? -> Ask Alana
+- move components folder to the expo project and see how components behave there -> DONE
 - !!! When you set fullwidth, text is not in the center !!! - DONE
 - Apply font to the code !!! - DONE -----
 - Make buttons with icons - DONE -----

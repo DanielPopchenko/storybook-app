@@ -1,10 +1,5 @@
 import { StyleSheet } from 'react-native';
-import {
-  NEUTRAL_BLACK_900,
-  NEUTRAL_GRAY_500,
-  NEUTRAL_WHITE_100,
-  NEUTRAL_WHITE_50,
-} from '../utils/colors';
+import { NEUTRAL_BLACK_900, NEUTRAL_GRAY_500, NEUTRAL_WHITE_50 } from '../utils/colors';
 
 export const styles = StyleSheet.create({
   icon: {
@@ -13,9 +8,8 @@ export const styles = StyleSheet.create({
     width: 18,
   },
   container: {
-    padding: 16,
-    backgroundColor: NEUTRAL_WHITE_100,
-    borderRadius: 10,
+    width: '100%',
+    height: '100%',
   },
   item: {
     display: 'flex',
@@ -35,13 +29,12 @@ export const styles = StyleSheet.create({
   title: {
     color: NEUTRAL_BLACK_900,
     fontSize: 15,
-    fontWeight: 500,
+    fontWeight: '500',
   },
   text: {
     color: NEUTRAL_GRAY_500,
   },
   content: {
-    // padding: 10,
     marginTop: 16,
   },
   grouped: {

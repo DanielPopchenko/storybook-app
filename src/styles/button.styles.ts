@@ -39,29 +39,27 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     gap: 12,
-    // flexShrink: 0,
     borderRadius: 5,
     flex: 1,
   },
   buttonTextBold: {
-    fontWeight: 700,
+    fontWeight: '700',
   },
   iconOnly: {
     borderRadius: 50,
-    paddingHorizontal: 11,
     margin: 0,
     gap: 0,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    width: 50,
+    height: 50,
   },
   buttonText: {
     textAlign: 'center',
     fontFamily: 'Manrope, sans-serif',
-    fontSize: 15,
     fontStyle: 'normal',
-    fontWeight: 500,
-    // lineHeight: 150,
+    fontWeight: '500',
   },
   buttonContainer: {
     alignItems: 'flex-start',
@@ -72,10 +70,6 @@ export const styles = StyleSheet.create({
   icon: {
     width: 25,
     height: 25,
-  },
-  playIcon: {
-    width: 115,
-    height: 115,
   },
   fullWidth: {
     width: '100%',

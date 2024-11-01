@@ -14,7 +14,7 @@ import {
   PRIMARY_BLUE_50,
 } from '../utils/colors';
 
-import { ButtonProps } from '../types/button.type';
+import { ButtonProps } from '../types/button.types';
 import { styles } from '../styles/button.styles';
 
 export const Button = ({
@@ -27,7 +27,8 @@ export const Button = ({
   iconLeft,
   isRounded,
   isIconOnly,
-  isFullWidth,
+  fontSize = 15,
+  style,
   ...props
 }: ButtonProps) => {
   const variantStyles: Record<ButtonProps['type'], ViewStyle | TextStyle> = {
@@ -81,23 +82,13 @@ export const Button = ({
       borderRadius: 5,
       flex: 1,
     },
-    play: {
-      borderRadius: 50,
-      margin: 0,
-      width: 'auto',
-      height: 'auto',
-      gap: 0,
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
     boxed: {
       borderRadius: 10,
       borderWidth: 1,
       borderColor: NEUTRAL_WHITE_150,
       color: NEUTRAL_BLACK_900,
       backgroundColor: NEUTRAL_WHITE_50,
-      minWidth: 322,
+      minHeight: 70,
     },
     tertiary: {
       backgroundColor: PRIMARY_BLUE_50,
@@ -109,6 +100,7 @@ export const Button = ({
     isRounded || type === 'card' || type === 'boxed' || type === 'tertiary'
       ? styles.buttonTextBold
       : null;
+
   const outlineTextStyle = type === 'outline' ? styles.outlineText : null;
 
   return (
@@ -118,12 +110,13 @@ export const Button = ({
         onPress={onPress}
         style={[
           styles.button,
+          styles.fullWidth,
           isRounded ? styles.rounded : null,
           variantStyles[type],
           iconLeft || iconRight ? styles.gap : null,
-          isIconOnly || type === 'play' ? styles.iconOnly : null,
-          isFullWidth ? styles.fullWidth : null,
-          isFullWidth && !iconLeft && !iconRight ? styles.contentCentered : null,
+          isIconOnly ? styles.iconOnly : null,
+          !iconLeft && !iconRight ? styles.contentCentered : null,
+          style,
         ]}
         {...props}
       >
@@ -136,30 +129,32 @@ export const Button = ({
         >
           {iconLeft && type !== 'card' ? iconLeft : null}
 
-          {isFullWidth && !iconLeft && !iconRight ? null : (
+          {!iconLeft && !iconRight ? null : (
             <Text
               style={{
                 ...styles.buttonText,
                 color: textColor,
                 ...outlineTextStyle,
                 ...activeBtnStyles,
+                fontSize: fontSize,
               }}
             >
-              {isIconOnly || type === 'play' ? null : children}
+              {isIconOnly ? null : children}
             </Text>
           )}
         </View>
 
-        {isFullWidth && !iconLeft && !iconRight ? (
+        {!iconLeft && !iconRight ? (
           <Text
             style={{
               ...styles.buttonText,
               color: textColor,
               ...outlineTextStyle,
               ...activeBtnStyles,
+              fontSize: fontSize,
             }}
           >
-            {isIconOnly || type === 'play' ? null : children}
+            {isIconOnly ? null : children}
           </Text>
         ) : null}
 

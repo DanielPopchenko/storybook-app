@@ -1,8 +1,8 @@
 import React from 'react';
+import { ViewStyle } from 'react-native';
 
 export type ButtonProps = {
-  // ! make text a children prop
-  children: string;
+  children?: string;
   textColor?: string;
   onPress?: () => void;
   type:
@@ -17,12 +17,12 @@ export type ButtonProps = {
     | 'activeOutline'
     | 'card'
     | 'boxed'
-    | 'tertiary'
-    | 'play';
+    | 'tertiary';
   isDisabled?: boolean;
   iconRight?: React.ReactNode;
   iconLeft?: React.ReactNode;
   isRounded?: boolean;
   isIconOnly?: boolean;
-  isFullWidth?: boolean;
+  fontSize?: number;
+  style?: ViewStyle;
 };

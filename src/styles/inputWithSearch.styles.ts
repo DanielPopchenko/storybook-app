@@ -1,24 +1,33 @@
 import { StyleSheet } from 'react-native';
 import {
-  NEUTRAL_BLACK_900,
-  NEUTRAL_WHITE_150,
   NEUTRAL_WHITE_50,
+  NEUTRAL_WHITE_150,
+  NEUTRAL_BLACK_900,
   PRIMARY_BLUE_900,
-  SECONDARY_RED_700,
 } from '../utils/colors';
+
 export const styles = StyleSheet.create({
   container: {
     width: 'auto',
     flex: 1,
     height: 'auto',
+
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: NEUTRAL_WHITE_150,
+    padding: 16,
   },
+  containerActive: {
+    borderColor: PRIMARY_BLUE_900,
+  },
+
   inputWrapper: {
     flex: 1,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
 
-    minHeight: 42,
+    minHeight: 56,
     justifyContent: 'space-between',
     backgroundColor: NEUTRAL_WHITE_50,
     paddingHorizontal: 12,
@@ -28,6 +37,38 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: NEUTRAL_WHITE_150,
+
+    marginVertical: 8,
+  },
+
+  icon: {
+    resizeMode: 'contain',
+    height: 18,
+    width: 18,
+    marginLeft: 8,
+  },
+
+  option: {
+    borderBottomColor: NEUTRAL_WHITE_150,
+    borderBottomWidth: 1,
+    paddingVertical: 16,
+  },
+  labelContainer: {
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+
+  labelText: {
+    color: NEUTRAL_BLACK_900,
+    fontSize: 15,
+    fontWeight: '500',
+  },
+
+  active: {
+    borderColor: PRIMARY_BLUE_900,
   },
 
   textInput: {
@@ -35,67 +76,4 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     height: '80%',
   },
-
-  text: {
-    color: NEUTRAL_BLACK_900,
-    fontFamily: 'Manrope',
-    fontSize: 11,
-    fontStyle: 'normal',
-    fontWeight: '500',
-  },
-
-  warningText: {
-    color: 'red',
-    fontSize: 12,
-    marginTop: 5,
-  },
-
-  icon: {
-    resizeMode: 'contain',
-    height: 18,
-    width: 18,
-  },
-
-  labelContainer: {
-    display: 'flex',
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 8,
-  },
-
-  labelText: {
-    fontSize: 15,
-    fontStyle: 'normal',
-    fontWeight: '700',
-    color: NEUTRAL_BLACK_900,
-    display: 'flex',
-  },
-
-  helpIconContainer: {
-    height: 24,
-    width: 24,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  defaultGap: { gap: 8 },
-  smallGap: { gap: 5 },
-  active: {
-    borderColor: PRIMARY_BLUE_900,
-  },
-  error: {
-    borderColor: SECONDARY_RED_700,
-  },
-  inactive: {
-    borderColor: NEUTRAL_WHITE_150,
-  },
-  largeText: {
-    fontSize: 15,
-    fontWeight: '500',
-  },
-  smallText: {
-    fontSize: 11.25,
-  },
-  fullWidth: { maxWidth: '100%', width: '100%' },
 });
